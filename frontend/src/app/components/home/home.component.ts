@@ -9,4 +9,5 @@ import { Component } from '@angular/core';
 })
 export class HomeComponent {
 
+  welcome = 'Welcome to ShyftX family';
 }
