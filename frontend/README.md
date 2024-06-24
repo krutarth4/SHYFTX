@@ -2,6 +2,19 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.0.5.
 
+## Docker deployment
+
+Here in this you don't need to install libraries locally. the installation of Docker is necessary. Install docker desktop (https://www.docker.com/products/docker-desktop/).
+
+After installing make sure in settings kubernetes is activated 
+
+after which get to the frontend folder and execute `docker-compose up -d` this will deploy the containers.
+For first time usage it might take a while but further development will be faster. 
+
+Also it will show live website hot reload, unless new libraries are added. 
+
+to stop execute `docker compose down`
+
 
 ## Requirements
 
