@@ -2,6 +2,16 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.0.5.
 
+
+## Requirements
+
+Install node js ~ https://nodejs.org/en/download/package-manager and install npm globally
+Then install angular cli
+https://angular.dev/tools/cli/setup-local ~ install the angular cli as is in the docs
+`npm install -g @angular/cli`
+
+
+To start run first `npm install` to install all the dependency and 'ng serve' to start the website on localhost
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
