@@ -1,5 +1,6 @@
 .example-container {
-  height: 500px;
+  /* height: 500px; */
+  height:  100%;
   border: 1px solid rgba(0, 0, 0, 0.5);
 }
 .example-sidenav-content {
@@ -10,6 +11,7 @@
 }
 .example-sidenav {
   user-select: none;
+
 }
 .full-width {
   width: 100%;
@@ -21,16 +23,7 @@
 .menu-button.rotated {
   transform: rotate(180deg);
 }
-.submenu {
-  overflow-y: hidden;
-  transition: transform 300ms ease;
-  transform: scaleY(0);
-  transform-origin: top;
-  padding-left: 30px;
-}
-.submenu.expanded {
-  transform: scaleY(1);
-}
+
 
 
 

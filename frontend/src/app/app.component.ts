@@ -77,6 +77,7 @@ export class AppComponent {
   showSubmenu: boolean = false;
   isShowing = false;
   showSubSubMenu: boolean = false;
+  showFiller = false
 
   imageUrl = input<string>();
   avatarSize = input<"avatar-sm" | "avatar-xl">();

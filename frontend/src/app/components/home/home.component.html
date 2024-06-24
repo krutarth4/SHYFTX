@@ -1,1 +1,35 @@
-<H1>{{welcome}}</H1>
+<div class="image-container">
+
+    <div class="image" (mouseover)="showText('Image 1')" (mouseout)="hideText()">
+  
+      <img src="src/assets/01_farmer.jpg" alt="Image 1">
+  
+      <div class="text" *ngIf="showImageText">{{ imageText }}</div>
+  
+    </div>
+  
+    <div class="image" (mouseover)="showText('Image 2')" (mouseout)="hideText()">
+  
+      <img src="https://www.google.com/url?sa=i&url=https%3A%2F%2Funsplash.com%2Fs%2Fphotos%2Findian-farmer&psig=AOvVaw3xKU3F9LN5QvVrABbvtOwB&ust=1719161150536000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCOCCkMfU74YDFQAAAAAdAAAAABAQ" alt="Image 2">
+  
+      <div class="text" *ngIf="showImageText">{{ imageText }}</div>
+  
+    </div>
+  
+    <div class="image" (mouseover)="showText('Image 3')" (mouseout)="hideText()">
+  
+      <img src="image3.jpg" alt="Image 3">
+  
+      <div class="text" *ngIf="showImageText">{{ imageText }}</div>
+  
+    </div>
+  
+    <div class="image" (mouseover)="showText('Image 4')" (mouseout)="hideText()">
+  
+      <img src="image4.jpg" alt="Image 4">
+  
+      <div class="text" *ngIf="showImageText">{{ imageText }}</div>
+  
+    </div>
+  
+  </div>
