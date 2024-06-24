@@ -1,0 +1,17 @@
+version: '3.8'
+services:
+  # Angular App
+  frontend:
+    build: ./
+    ports:
+      - "4200:4200"
+#    depends_on:
+#      backend:
+#        condition: service_started
+    volumes:
+      - ./:/project
+      - /project/node_modules
+# No need for storage
+#volumes:
+#  db:
+#    driver: local
