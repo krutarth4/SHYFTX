@@ -31,6 +31,7 @@ import {MatTableModule} from "@angular/material/table";
 import {MatTabsModule} from "@angular/material/tabs";
 import {MatTooltipModule} from "@angular/material/tooltip";
 import {MatStepperModule} from "@angular/material/stepper";
+import {MatBadgeModule} from "@angular/material/badge";
 
 @Component({
   selector: 'app-root',
@@ -66,14 +67,14 @@ import {MatStepperModule} from "@angular/material/stepper";
     MatTabsModule,
     MatToolbarModule,
     MatTooltipModule,
-    MatStepperModule],
+    MatStepperModule,
+    MatBadgeModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
 export class AppComponent {
 
   @ViewChild('sidenav') sidenav: MatSidenav | undefined;
-  events: string[] = [];
   opened: boolean = true;
 
   isExpanded = true;

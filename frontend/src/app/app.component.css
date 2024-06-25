@@ -38,3 +38,10 @@ mat-sidenav-content {
   flex-direction: column;
   min-height: 100%;
 }
+
+/*badge in side nav */
+demo-section{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start !important;
+}

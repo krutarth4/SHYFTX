@@ -66,22 +66,16 @@
     <mat-nav-list>
 
         <a mat-list-item routerLink="/home">Home</a>
-
         <a mat-list-item routerLink="/dashboard">Dashboard</a>
-
-        <a mat-list-item routerLink="/services">Invoice</a>
-
-        <a mat-list-item routerLink="/contact">CO2 calculator</a>
+        <a mat-list-item routerLink="/invoice">Invoices</a>
+<!--      For badges in invoice and notifications -->
+<!--      <div matBadge="6" matBadgeOverlap="true" class="demo-section">-->
+        <a mat-list-item routerLink="/contract">Contracts</a>
+        <a mat-list-item routerLink="/c02">CO2 calculator</a>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
     <router-outlet></router-outlet>
   </mat-sidenav-content>
-
-
-<!--     <div class="example-sidenav-content">-->
-<!--      -->
-<!--     </div>-->
-
 </mat-sidenav-container>
 
