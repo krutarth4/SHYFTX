@@ -63,7 +63,7 @@
 <mat-sidenav-container class="example-container" autosize>
      <mat-sidenav #sidenav class="example-sidenav" mode="side" opened="true" (mouseenter)="mouseenter()" (mouseleave)="mouseleave()">
        <mat-nav-list>
-        
+
         <mat-drawer #drawer class="example-sidenav" mode="side">
             <a mat-list-item routerLink="/home">Home</a>
 
@@ -72,13 +72,14 @@
         <a mat-list-item routerLink="/services">Invoice</a>
 
          <a mat-list-item routerLink="/contact">CO2 calculator</a>
-          </mat-drawer>     
+          </mat-drawer>
       </mat-nav-list>
      </mat-sidenav>
-    
-     <div class="example-sidenav-content">
-       <router-outlet></router-outlet>
- </div>
-    
+  <router-outlet></router-outlet>
+
+<!--     <div class="example-sidenav-content">-->
+<!--      -->
+<!--     </div>-->
+
 </mat-sidenav-container>
 
