@@ -73,6 +73,9 @@ import {MatStepperModule} from "@angular/material/stepper";
 export class AppComponent {
 
   @ViewChild('sidenav') sidenav: MatSidenav | undefined;
+  events: string[] = [];
+  opened: boolean = true;
+
   isExpanded = true;
   showSubmenu: boolean = false;
   isShowing = false;

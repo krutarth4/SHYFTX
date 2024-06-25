@@ -34,7 +34,7 @@
 <!--</mat-sidenav-container>-->
 
 <mat-toolbar>
-  <button mat-icon-button (click)="drawer.toggle()" class="example-icon" aria-label="Example icon-button with menu icon">
+  <button mat-icon-button (click)="sidenav.toggle()" class="example-icon" aria-label="Example icon-button with menu icon">
     <mat-icon>menu</mat-icon>
   </button>
   <span>SHYFTX</span>
@@ -61,21 +61,23 @@
 
 </mat-toolbar>
 <mat-sidenav-container class="example-container" autosize>
-     <mat-sidenav #sidenav class="example-sidenav" mode="side" opened="true" (mouseenter)="mouseenter()" (mouseleave)="mouseleave()">
-       <mat-nav-list>
+<!--     <mat-sidenav #sidenav class="example-sidenav" mode="side" opened="true" (mouseenter)="mouseenter()" (mouseleave)="mouseleave()">-->
+  <mat-sidenav #sidenav mode="side" [(opened)]="opened" (mouseenter)="mouseenter()" (mouseleave)="mouseleave()">
+    <mat-nav-list>
 
-        <mat-drawer #drawer class="example-sidenav" mode="side">
-            <a mat-list-item routerLink="/home">Home</a>
+        <a mat-list-item routerLink="/home">Home</a>
 
-        <a mat-list-item routerLink="/about">Requets</a>
+        <a mat-list-item routerLink="/dashboard">Dashboard</a>
 
         <a mat-list-item routerLink="/services">Invoice</a>
 
-         <a mat-list-item routerLink="/contact">CO2 calculator</a>
-          </mat-drawer>
-      </mat-nav-list>
-     </mat-sidenav>
-  <router-outlet></router-outlet>
+        <a mat-list-item routerLink="/contact">CO2 calculator</a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+
 
 <!--     <div class="example-sidenav-content">-->
 <!--      -->
