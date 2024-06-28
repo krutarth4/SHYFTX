@@ -1,35 +1,100 @@
-<div class="image-container">
-
-    <div class="image" (mouseover)="showText('Image 1')" (mouseout)="hideText()">
-  
-      <img src="src/assets/01_farmer.jpg" alt="Image 1">
-  
-      <div class="text" *ngIf="showImageText">{{ imageText }}</div>
-  
-    </div>
-  
-    <div class="image" (mouseover)="showText('Image 2')" (mouseout)="hideText()">
-  
-      <img src="https://www.google.com/url?sa=i&url=https%3A%2F%2Funsplash.com%2Fs%2Fphotos%2Findian-farmer&psig=AOvVaw3xKU3F9LN5QvVrABbvtOwB&ust=1719161150536000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCOCCkMfU74YDFQAAAAAdAAAAABAQ" alt="Image 2">
-  
-      <div class="text" *ngIf="showImageText">{{ imageText }}</div>
-  
-    </div>
-  
-    <div class="image" (mouseover)="showText('Image 3')" (mouseout)="hideText()">
-  
-      <img src="image3.jpg" alt="Image 3">
-  
-      <div class="text" *ngIf="showImageText">{{ imageText }}</div>
-  
-    </div>
-  
-    <div class="image" (mouseover)="showText('Image 4')" (mouseout)="hideText()">
-  
-      <img src="image4.jpg" alt="Image 4">
-  
-      <div class="text" *ngIf="showImageText">{{ imageText }}</div>
-  
-    </div>
-  
+<div class="container">
+  <div class="hero-section">
+    <h1 class="title">Transform Your Supply Chain with SHYFTX</h1>
+    <p class="subtitle">We provide a comprehensive platform for efficient and transparent agricultural transportation, leveraging advanced technology to optimize your supply chain.</p>
   </div>
+
+  <div class="card-container">
+    <div class="card shippers">
+      <h2>Shippers</h2>
+    </div>
+    <div class="card carriers">
+      <h2>Carriers</h2>
+    </div>
+  </div>
+</div>
+
+<div class="solution-section">
+  <h2>Comprehensive Farm-to-Market Solutions</h2>
+  <p>Engineered to Revolutionize Agricultural Transport</p>
+  <p>Experience a tailored solution with advanced technology to streamline your transport process, maximize efficiency, and reduce costs, ensuring a smooth journey from farm to market.</p>
+</div>
+
+<div class="features-section">
+  <div class="feature">
+    <h3>Real-Time Optimization</h3>
+    <p>Harness the power of our real-time optimization algorithm to reduce transportation costs and increase efficiency. <a href="#">Learn More</a></p>
+  </div>
+  <div class="feature">
+    <h3>Transparent Pricing</h3>
+    <p>Enjoy transparent pricing and detailed insights into your transportation costs, enabling better budgeting and cost management. <a href="#">Learn More</a></p>
+  </div>
+  <div class="feature">
+    <h3>Centralized Scheduling</h3>
+    <p>Our platform offers a centralized space for truckers to manage schedules, ensuring consistent job availability and reduced idle time. <a href="#">Learn More</a></p>
+  </div>
+  <div class="feature">
+    <h3>Digital Documentation</h3>
+    <p>Streamline your transport process with our digital solutions for verified transport documentation and tracking. <a href="#">Learn More</a></p>
+  </div>
+  <div class="feature">
+    <h3>Risk Reduction</h3>
+    <p>Lower your risk and insurance rates by improving transport reliability and reducing food loss during transit. <a href="#">Learn More</a></p>
+  </div>
+</div>
+
+<div class="header">
+  <h1>Optimizing Agricultural Logistics</h1>
+  <p>The ultimate platform for efficient, cost-effective, and transparent agricultural transportation solutions. Customized to meet the unique needs of farmers and truckers, powered by cutting-edge technology, and backed by a team of experts dedicated to perfecting your logistics.</p>
+  <button class="contact-us">Contact Us</button>
+</div>
+
+<div class="services-section">
+  <div class="service">
+    <div class="service-content">
+      <h3>Agricultural Logistics Solutions</h3>
+      <h6>Connecting Farmers and Truckers</h6>
+      <p>SHYFTX bridges the gap between farmers and truckers, offering a multisided platform that enhances efficiency, reduces costs, and improves scheduling.</p>
+      <p>Efficient Transport Management</p>
+      <p>Our platform provides farmers and truckers with the tools they need to manage transportation efficiently, from scheduling and documentation to real-time tracking and optimization.</p>
+      <p>Cost-Effective and Sustainable</p>
+      <p>By reducing transport costs and improving efficiency, SHYFTX helps farmers increase their profit margins and promotes sustainable agricultural practices.</p>
+      <button>Learn more</button>
+    </div>
+    <div class="service-image">
+      <img src="https://images.unsplash.com/photo-1616432043562-3671ea2e5242?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D">
+    </div>
+  </div>
+
+  <div class="personal-interaction">
+    <div class="personal-image">
+      <img src="https://plus.unsplash.com/premium_photo-1663011354048-a81a907effd2?q=80&w=1471&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D">
+    </div>
+    <div class="personal-content">
+      <h3>News & Industry Insights</h3>
+      <h6>Stay Updated with the Latest in Agricultural Logistics</h6>
+      <p>Read our latest articles, press releases, and reports to stay informed about industry trends and SHYFTX developments.</p>
+      <button>Learn more</button>
+    </div>
+  </div>
+</div>
+
+<div class="contact-section">
+  <h2>Get in Touch</h2>
+  <p>Would you like to talk to us about your current business needs?</p>
+  <p>Simply fill in the form below and one of our SHYFTX experts will write you back shortly.</p>
+  <form class="contact-form">
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name">
+    
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email">
+    
+    <label for="message">Message:</label>
+    <textarea id="message" name="message"></textarea>
+    
+    <button type="submit">Submit</button>
+  </form>
+</div>
+
+
