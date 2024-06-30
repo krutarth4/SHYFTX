@@ -31,6 +31,10 @@ export const routes: Routes = [
   {
     path:'farmer/trucks?options',
     loadComponent: () => import('./components/truck-options/truck-options.component').then(m => m.TruckOptionsComponent),
+  },
+  {
+    path:'login',
+    loadComponent: () => import('./components/login/login.component').then(m => m.LoginComponent),
   }
 
 ];

@@ -319,7 +319,7 @@ body {
   margin: 10px 0 5px;
 }
 
-.contact-form input, 
+.contact-form input,
 .contact-form textarea {
   width: 100%;
   max-width: 500px;
@@ -339,3 +339,17 @@ body {
 .contact-form button:hover {
   background-color: #c0392b;
 }
+.image-container {
+  width: 100%;  /* or any specific width, like 50% or 300px */
+  height: auto;
+}
+.responsive-image{
+  width: 100%;
+  height: auto;
+
+}
+/*.image-home{*/
+/*  width: 600px;*/
+/*  height: 100%;*/
+/*  transform: scale(1.5);*/
+/*}*/
