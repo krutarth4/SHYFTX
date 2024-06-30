@@ -17,6 +17,7 @@ import {MatDatepickerModule} from "@angular/material/datepicker";
 import {MatGridListModule} from "@angular/material/grid-list";
 import {MatSnackBar, MatSnackBarModule} from "@angular/material/snack-bar";
 import {MatProgressSpinner} from "@angular/material/progress-spinner";
+import {TransferDataService} from "../../services/transferData/transfer-data.service";
 
 
 @Component({
@@ -50,7 +51,9 @@ export class FarmerCreateOrdersDashboardComponent {
   tripForm: FormGroup;
   isLoading = false;
   formData:any
-  constructor(public dialog: MatDialog,private fb: FormBuilder, private snackBar: MatSnackBar) {
+  constructor(public dialog: MatDialog,private fb: FormBuilder, private snackBar: MatSnackBar,
+              private transferDataService : TransferDataService
+  ) {
     this.tripForm = this.fb.group({
       source: [''],
       destination: [''],
@@ -79,12 +82,11 @@ export class FarmerCreateOrdersDashboardComponent {
       console.log(result);
     });}
 
-  deleteTodo(index: number) {
-    this.orders.splice(index, 1);
-  }
+
 
   onSubmit() {
     console.log(this.tripForm.value);
+    this.transferDataService.addFarmerRequest(this.tripForm.value)
     if (this.tripForm.valid) {
       this.isLoading = true;
       this.formData = this.tripForm.value;
@@ -92,7 +94,7 @@ export class FarmerCreateOrdersDashboardComponent {
       // Simulate an asynchronous operation (e.g., HTTP request)
       setTimeout(() => {
         this.isLoading = false;
-        this.snackBar.open('Form submitted successfully!', 'Close', {
+        this.snackBar.open('Order submitted successfully!', 'Close', {
           duration: 3000,
         });
         this.resetForm();
