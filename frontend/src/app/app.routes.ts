@@ -1,5 +1,8 @@
 import { Routes } from '@angular/router';
 import {HomeComponent} from "./components/home/home.component";
+import {
+  FarmerCreateOrdersDashboardComponent
+} from "./components/farmer-create-orders-dashboard/farmer-create-orders-dashboard.component";
 
 // @ts-ignore
 export const routes: Routes = [
@@ -22,8 +25,12 @@ export const routes: Routes = [
   },
   {
     path:'farmer',
-    loadComponent: () => import('./components/farmer-create-orders-dashboard/farmer-create-orders-dashboard.component').then(m => m.FarmerCreateOrdersDashboardComponent),
-
+    component: FarmerCreateOrdersDashboardComponent,
+    // loadComponent: () => import('./components/farmer-create-orders-dashboard/farmer-create-orders-dashboard.component').then(m => m.FarmerCreateOrdersDashboardComponent),
+  },
+  {
+    path:'farmer/trucks?options',
+    loadComponent: () => import('./components/truck-options/truck-options.component').then(m => m.TruckOptionsComponent),
   }
 
 ];
