@@ -1,0 +1,19 @@
+<p>form-dialog works!</p>
+<h1 mat-dialog-title>Input Information</h1>
+<mat-dialog-content>
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <mat-form-field>
+      <mat-label>Name</mat-label>
+      <input matInput formControlName="name" required>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Email</mat-label>
+      <input matInput formControlName="email" required>
+    </mat-form-field>
+    <button mat-button type="submit" [disabled]="form.invalid">Save</button>
+  </form>
+<mat-dialog-content/>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Cancel</button>
+</div>
+

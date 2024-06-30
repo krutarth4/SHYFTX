@@ -1,0 +1,23 @@
+.container{
+  padding: 10px !important;
+  align-items: end;
+  justify-content: end;
+
+}
+mat-card {
+  max-width: 90%;
+  margin: 2em auto;
+  padding: 2em;
+}
+
+mat-form-field {
+  display: block;
+  margin-bottom: 1em;
+}
+
+.button-row {
+  display: flex;
+  justify-content: center;
+  margin-top: 1em;
+  padding: 1em;
+}

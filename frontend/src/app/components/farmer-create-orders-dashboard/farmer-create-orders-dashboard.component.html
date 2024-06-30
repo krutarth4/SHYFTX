@@ -1,1 +1,91 @@
-<p>farmer-create-orders-dashboard works!</p>
+<!--<div class="container">-->
+<!--    <button mat-raised-button color="primary" (click)="openDialog()">Create</button>-->
+<!--    <button mat-raised-button color="warn" (click)="addTodo()">Delete</button>-->
+<!--</div>-->
+
+
+<mat-card>
+  <form [formGroup]="tripForm" (ngSubmit)="onSubmit()">
+    <div class="form-row">
+
+
+    <mat-form-field appearance="fill">
+      <mat-label>Pickup Location</mat-label>
+      <input matInput formControlName="source" placeholder="Address, Zipcode, Country">
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Delivery Location</mat-label>
+      <input matInput formControlName="destination" placeholder="Address, ZipCode, Country">
+    </mat-form-field>
+    </div>
+    <mat-form-field appearance="fill">
+      <mat-label>Pickup Date</mat-label>
+      <input matInput [matDatepicker]="pickupDatePicker" formControlName="pickupDate" placeholder="Pickup date ">
+      <mat-datepicker-toggle matSuffix [for]="pickupDatePicker"></mat-datepicker-toggle>
+      <mat-datepicker #pickupDatePicker></mat-datepicker>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Dropoff Date</mat-label>
+      <input matInput [matDatepicker]="dropoffDatePicker" formControlName="dropoffDate" placeholder="Dropoff date">
+      <mat-datepicker-toggle matSuffix [for]="dropoffDatePicker"></mat-datepicker-toggle>
+      <mat-datepicker #dropoffDatePicker></mat-datepicker>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Type of Goods</mat-label>
+      <mat-select formControlName="typeOfGoods">
+        <mat-option value="perishable">Perishable</mat-option>
+        <mat-option value="non-perishable">Non-perishable</mat-option>
+        <mat-option value="fragile">Fragile</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Quantity of goods</mat-label>
+      <input matInput formControlName="capacity" type="number" placeholder="Quantity of goods in kg">
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Vehicle Category</mat-label>
+      <mat-select formControlName="vehicleCategory">
+        <mat-option value="flatbed">Flatbed Truck</mat-option>
+        <mat-option value="box">Box Truck (Dry Van)</mat-option>
+        <mat-option value="refrigerated">Refrigerated Truck (Reefer)</mat-option>
+        <mat-option value="tanker">Tanker Truck</mat-option>
+        <mat-option value="flatbed-conestoga">Flatbed with Conestoga</mat-option>
+        <mat-option value="dump">Dump Truck</mat-option>
+        <mat-option value="livestock">Livestock Truck</mat-option>
+        <mat-option value="curtainside">Curtainside Truck</mat-option>
+        <mat-option value="lowboy">Lowboy Trailer</mat-option>
+        <mat-option value="car-carrier">Car Carrier Truck</mat-option>
+        <mat-option value="side-lifter">Side-lifter Truck</mat-option>
+        <mat-option value="hopper">Hopper Truck</mat-option>
+        <mat-option value="box-liftgate">Box Truck with Liftgate</mat-option>
+        <mat-option value="dry-bulk">Dry Bulk Truck</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+
+    <mat-form-field appearance="fill">
+      <mat-label>Comments</mat-label>
+      <textarea matInput formControlName="comments" placeholder="enter any special requirements for the goods specified"></textarea>
+    </mat-form-field>
+
+
+    <div class="button-row">
+      <button mat-raised-button color="primary" type="submit">
+        <span >Submit</span>
+      </button>
+    </div>
+  </form>
+</mat-card>
+
+
+
+
+
+
+
+
+
