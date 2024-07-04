@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import {BehaviorSubject} from "rxjs";
+import {Router} from "@angular/router";
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +13,7 @@ export class TransferDataService {
  private userRole : string ="admin"
   farmerRequest:any =[]; // the order form will be saved here
 
-  constructor() {
+  constructor(private router: Router) {
     // this.farmerRequest = [];
     this.userMap.set('role', "admin");
   }
@@ -31,6 +32,13 @@ export class TransferDataService {
     this.userMap.set("pass",password);
     this.userMap.set("role",username.toLowerCase());
     this.roleSource.next(this.getUserRole())
+      if(this.getUserRole() =="farmer"){
+        this.router.navigate(['farmer']);
+      }else if(this.userRole =="trucker"){
+        this.router.navigate(['dashboard']);
+      }else{
+        this.router.navigate(['home']);
+      }
   }
   getUserRole(){
     return this.userMap.has("role")? this.userMap.get("role") : "admin";

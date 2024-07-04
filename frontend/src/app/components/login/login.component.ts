@@ -30,7 +30,7 @@ export class LoginComponent {
     if (this.loginForm.valid) {
       const { username, password } = this.loginForm.value;
       this.transferService.setUser(username, password);
-      this.router.navigate(['home']);
+
     }
   }
 
