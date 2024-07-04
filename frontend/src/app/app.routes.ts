@@ -35,6 +35,10 @@ export const routes: Routes = [
   {
     path:'login',
     loadComponent: () => import('./components/login/login.component').then(m => m.LoginComponent),
+  },
+  {
+    path:'map',
+    loadComponent: () => import('./components/map/map.component').then(m => m.MapComponent),
   }
 
 ];
