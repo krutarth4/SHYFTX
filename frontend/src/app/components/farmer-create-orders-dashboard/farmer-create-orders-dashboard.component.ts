@@ -59,6 +59,7 @@ export class FarmerCreateOrdersDashboardComponent {
       destination: [''],
       pickupDate: [''],
       dropoffDate: [''],
+      typeOfGoods: [''],
       comments: [''],
       vehicleCategory: [''],
       capacity: ['']
