@@ -16,15 +16,19 @@
   <mat-sidenav #sidenav mode="side" [(opened)]="opened" (mouseenter)="mouseenter()" (mouseleave)="mouseleave()">
     <mat-nav-list>
 
-        <a mat-list-item routerLink="/home">Home</a>
-        <a mat-list-item routerLink="/dashboard">Orders</a>
-        <a mat-list-item routerLink="/invoice">Invoices</a>
+
+
+        <a mat-list-item routerLink="/home" *ngIf="userRole === 'admin'">Home</a>
+
 <!--      For badges in invoice and notifications -->
 <!--      <div matBadge="6" matBadgeOverlap="true" class="demo-section">-->
-        <a mat-list-item routerLink="/contract">Contracts</a>
-        <a mat-list-item routerLink="/farmer">Create Order</a>
-        <a mat-list-item routerLink="/c02">Statistics</a>
-        <a mat-list-item routerLink="/farmer/trucks?options">Truck Overview</a>
+
+        <a mat-list-item routerLink="/farmer" *ngIf="userRole === 'admin' || userRole ==='farmer'  ">Create Order</a>
+      <a mat-list-item routerLink="/dashboard" *ngIf="userRole === 'admin' || userRole ==='trucker' || userRole ==='farmer'  ">Orders</a>
+      <a mat-list-item routerLink="/invoice" *ngIf="userRole === 'admin' || userRole ==='trucker' || userRole ==='farmer' " >Invoices</a>
+      <a mat-list-item routerLink="/contract" *ngIf="userRole === 'admin' || userRole ==='trucker' || userRole ==='farmer' ">Contracts</a>
+        <a mat-list-item routerLink="/farmer/trucks?options" *ngIf="userRole === 'admin' ">Truck Overview</a>
+      <a mat-list-item routerLink="/c02" *ngIf="userRole === 'admin' || userRole ==='trucker'  ">Statistics</a>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>

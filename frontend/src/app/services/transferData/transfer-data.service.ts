@@ -1,14 +1,20 @@
 import { Injectable } from '@angular/core';
+import {BehaviorSubject} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
 })
 export class TransferDataService {
 
+ private userMap =  new Map<string,any>();
+  private roleSource = new BehaviorSubject<string>('admin');
+  currentRole = this.roleSource.asObservable();
+ private userRole : string ="admin"
   farmerRequest:any =[]; // the order form will be saved here
 
   constructor() {
     // this.farmerRequest = [];
+    this.userMap.set('role', "admin");
   }
 
    getFarmerRequest(): any {
@@ -20,5 +26,14 @@ export class TransferDataService {
     console.log("transfer service",this.farmerRequest);
   }
 
+    setUser(username: string,password: string){
+    this.userMap.set("username",username);
+    this.userMap.set("pass",password);
+    this.userMap.set("role",username.toLowerCase());
+    this.roleSource.next(this.getUserRole())
+  }
+  getUserRole(){
+    return this.userMap.has("role")? this.userMap.get("role") : "admin";
+  }
 
 }

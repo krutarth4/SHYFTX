@@ -32,6 +32,7 @@ import {MatTabsModule} from "@angular/material/tabs";
 import {MatTooltipModule} from "@angular/material/tooltip";
 import {MatStepperModule} from "@angular/material/stepper";
 import {MatBadgeModule} from "@angular/material/badge";
+import {TransferDataService} from "./services/transferData/transfer-data.service";
 
 @Component({
   selector: 'app-root',
@@ -78,16 +79,21 @@ export class AppComponent {
   opened: boolean = true;
 
   isExpanded = true;
-  showSubmenu: boolean = false;
   isShowing = false;
-  showSubSubMenu: boolean = false;
-  showFiller = false
+ userRole: string ="";
 
   imageUrl = input<string>();
   avatarSize = input<"avatar-sm" | "avatar-xl">();
 
-  constructor(private router: Router) {
+  constructor(private router: Router, private transferService: TransferDataService) {
+
   }
+
+  ngOnInit(){
+    this.transferService.currentRole.subscribe(role => this.userRole = role)
+  }
+
+
   mouseenter() {
     if (!this.isExpanded) {
       this.isShowing = true;
@@ -102,5 +108,8 @@ export class AppComponent {
 
   login() {
     this.router.navigate(['login']);
+  }
+  setRole(role: string){
+    this.userRole =role;
   }
 }
