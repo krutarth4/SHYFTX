@@ -21,8 +21,4 @@ export class TransferDataService {
   }
 
 
-
-
-
-
 }

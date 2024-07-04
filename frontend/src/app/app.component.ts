@@ -1,5 +1,5 @@
 import {Component, input, ViewChild} from '@angular/core';
-import {RouterLink, RouterLinkActive, RouterOutlet} from '@angular/router';
+import {Router, RouterLink, RouterLinkActive, RouterOutlet} from '@angular/router';
 import {CommonModule} from "@angular/common";
 import {MatSidenav, MatSidenavModule} from "@angular/material/sidenav";
 import {MatToolbarModule} from "@angular/material/toolbar";
@@ -86,6 +86,8 @@ export class AppComponent {
   imageUrl = input<string>();
   avatarSize = input<"avatar-sm" | "avatar-xl">();
 
+  constructor(private router: Router) {
+  }
   mouseenter() {
     if (!this.isExpanded) {
       this.isShowing = true;
@@ -96,5 +98,9 @@ export class AppComponent {
     if (!this.isExpanded) {
       this.isShowing = false;
     }
+  }
+
+  login() {
+    this.router.navigate(['login']);
   }
 }

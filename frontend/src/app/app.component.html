@@ -6,22 +6,9 @@
   <img src="/assets/logo.png" alt="Logo" class="logo">
   <span>SHYFTX</span>
   <span class="example-spacer"></span>
-  <button mat-icon-button class="example-icon login-icon" aria-label="Example icon-button with login icon">
+  <button mat-icon-button class="example-icon login-icon" aria-label="Example icon-button with login icon" (click)="login()">
     <mat-icon>account_circle</mat-icon>
   </button>
-  <div class="flex align-content-center">
-    @if(imageUrl() != null) {
-      <img src="{{imageUrl()}}"
-           alt="user-avatar"
-           class="border-round-3xl avatar"
-           [ngClass]="avatarSize()">
-    } @else {
-      <div class="flex align-items-center justify-content-center unknow-user"
-      [ngClass]="avatarSize()">
-<!--        <fa-icon [icon]="'user'" class="text-dark"></fa-icon>-->
-      </div>
-    }
-  </div>
 
 </mat-toolbar>
 <mat-sidenav-container class="example-container" autosize>
