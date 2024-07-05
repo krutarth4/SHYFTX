@@ -15,9 +15,9 @@ export class GoogleAPIService {
     const params = new HttpParams()
       .set('input', input)
       .set('types', 'geocode')
-      .set('key', "");
+      .set('key', environment.googleMapsApiKey);
 
-    return this.http.get<any>('/api/place/autocomplete/json', { params });
+    return this.http.get<any>(this.apiUrl, { params });
   }
 
 

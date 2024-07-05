@@ -112,7 +112,6 @@ export class FarmerCreateOrdersDashboardComponent {
       this.predictions = [];
     }
 
-    console.log(this.predictions)
   }
 
   openDialog(): void {
