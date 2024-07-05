@@ -17,6 +17,7 @@ import {MatSnackBar, MatSnackBarModule} from "@angular/material/snack-bar";
 import {MatProgressSpinner} from "@angular/material/progress-spinner";
 import {TransferDataService} from "../../services/transferData/transfer-data.service";
 import {CommonModule} from "@angular/common";
+import {GoogleAPIService} from "../../services/GoogleAPI/google-api.service";
 
 // declare var google: any;
 @Component({
@@ -41,6 +42,7 @@ import {CommonModule} from "@angular/common";
     MatProgressSpinner,
     CommonModule,
 
+
   ],
   templateUrl: './farmer-create-orders-dashboard.component.html',
   styleUrl: './farmer-create-orders-dashboard.component.css'
@@ -57,7 +59,7 @@ export class FarmerCreateOrdersDashboardComponent {
   predictions: any[] = [];
   // private apiKey = environment.apiKey;
   constructor(public dialog: MatDialog,private fb: FormBuilder, private snackBar: MatSnackBar,
-              private transferDataService : TransferDataService
+              private transferDataService : TransferDataService, private googlePlacesService: GoogleAPIService
   ) {
     this.tripForm = this.fb.group({
       source: [''],
@@ -98,17 +100,17 @@ export class FarmerCreateOrdersDashboardComponent {
     //   this.predictions = [];
     // }
 
-    // if (input) {
-    //   this.httpClientService.getPlacePredictions(input).subscribe(response => {
-    //     if (response.status === 'OK') {
-    //       this.predictions = response.predictions;
-    //     } else {
-    //       this.predictions = [];
-    //     }
-    //   });
-    // } else {
-    //   this.predictions = [];
-    // }
+    if (input) {
+      this.googlePlacesService.getPlacePredictions(input).subscribe(response => {
+        if (response.status === 'OK') {
+          this.predictions = response.predictions;
+        } else {
+          this.predictions = [];
+        }
+      });
+    } else {
+      this.predictions = [];
+    }
 
     console.log(this.predictions)
   }
