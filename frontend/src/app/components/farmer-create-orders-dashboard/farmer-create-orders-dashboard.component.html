@@ -15,8 +15,13 @@
     </mat-form-field>
     <mat-form-field appearance="fill">
       <mat-label>Delivery Location</mat-label>
-      <input matInput formControlName="destination" placeholder="Address, ZipCode, Country">
+      <input matInput #autocompleteInput formControlName="destination" placeholder="Address, ZipCode, Country" (input)="onInputChange()" >
     </mat-form-field>
+      <ul *ngIf="predictions.length > 0">
+        <li *ngFor="let prediction of predictions" (click)="selectPrediction(prediction,'destination')">
+          {{ prediction.description }}
+        </li>
+      </ul>
     </div>
     <mat-form-field appearance="fill">
       <mat-label>Pickup Date</mat-label>

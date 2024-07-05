@@ -21,3 +21,23 @@ mat-form-field {
   margin-top: 1em;
   padding: 1em;
 }
+
+ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  border: 1px solid #ccc;
+  max-height: 200px;
+  overflow-y: auto;
+  position: absolute;
+  background-color: white;
+  width: 100%;
+  z-index: 1000;
+}
+li {
+  padding: 8px;
+  cursor: pointer;
+}
+li:hover {
+  background-color: #ddd;
+}

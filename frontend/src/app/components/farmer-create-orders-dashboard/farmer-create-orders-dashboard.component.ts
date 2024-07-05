@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, ElementRef, ViewChild} from '@angular/core';
 import {MatExpansionModule} from "@angular/material/expansion";
 import {MatSelectModule} from "@angular/material/select";
 import {BrowserModule} from "@angular/platform-browser";
@@ -18,8 +18,12 @@ import {MatGridListModule} from "@angular/material/grid-list";
 import {MatSnackBar, MatSnackBarModule} from "@angular/material/snack-bar";
 import {MatProgressSpinner} from "@angular/material/progress-spinner";
 import {TransferDataService} from "../../services/transferData/transfer-data.service";
+import {environment} from "../../../environments/environment";
+import {CommonModule} from "@angular/common";
+import {HttpClient} from "@angular/common/http";
+import {HttpClientService} from "../../services/HttpClient/http-client.service";
 
-
+declare var google: any;
 @Component({
   selector: 'app-farmer-create-orders-dashboard',
   standalone: true,
@@ -39,20 +43,25 @@ import {TransferDataService} from "../../services/transferData/transfer-data.ser
     MatNativeDateModule,
     MatGridListModule,
     MatSnackBarModule,
-    MatProgressSpinner
+    MatProgressSpinner,
+    CommonModule
   ],
   templateUrl: './farmer-create-orders-dashboard.component.html',
   styleUrl: './farmer-create-orders-dashboard.component.css'
 })
 export class FarmerCreateOrdersDashboardComponent {
+
+  @ViewChild('autocompleteInput', { static: false }) autocompleteInput: ElementRef | undefined;
   newTodo: string = '';
-  orders: string[] = [];
   isFormOpen= false;
   tripForm: FormGroup;
   isLoading = false;
   formData:any
+  autocompleteService: any;
+  predictions: any[] = [];
+  // private apiKey = environment.apiKey;
   constructor(public dialog: MatDialog,private fb: FormBuilder, private snackBar: MatSnackBar,
-              private transferDataService : TransferDataService
+              private transferDataService : TransferDataService,private httpClient:HttpClientService,
   ) {
     this.tripForm = this.fb.group({
       source: [''],
@@ -66,11 +75,44 @@ export class FarmerCreateOrdersDashboardComponent {
     });
   }
 
+  ngOnInit(): void {
+    this.autocompleteService = new google.maps.places.AutocompleteService();
+  }
+
   addTodo() {
     this.isFormOpen =!this.isFormOpen;
     if (this.newTodo.trim()) {
       this.newTodo = '';
     }
+  }
+
+  onInputChange(): void {
+    const input = this.autocompleteInput?.nativeElement.value;
+    // if (input) {
+    //   this.autocompleteService.getPlacePredictions({ input }, (predictions: any, status: any) => {
+    //     if (status === google.maps.places.PlacesServiceStatus.OK) {
+    //       this.predictions = predictions;
+    //     } else {
+    //       this.predictions = [];
+    //     }
+    //   });
+    // } else {
+    //   this.predictions = [];
+    // }
+
+    if (input) {
+      this.httpClient.getPlacePredictions(input).subscribe(response => {
+        if (response.status === 'OK') {
+          this.predictions = response.predictions;
+        } else {
+          this.predictions = [];
+        }
+      });
+    } else {
+      this.predictions = [];
+    }
+
+    console.log(this.predictions)
   }
 
   openDialog(): void {
@@ -82,8 +124,6 @@ export class FarmerCreateOrdersDashboardComponent {
       console.log('The dialog was closed');
       console.log(result);
     });}
-
-
 
   onSubmit() {
     console.log(this.tripForm.value);
@@ -107,8 +147,12 @@ export class FarmerCreateOrdersDashboardComponent {
       });
     }
   }
-
   resetForm() {
     this.tripForm.reset();
+  }
+    selectPrediction(prediction: any, formField: string): void {
+      this.tripForm.controls[formField].setValue(prediction.description);
+      this.predictions = [];
+
   }
 }
