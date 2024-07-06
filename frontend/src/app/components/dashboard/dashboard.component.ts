@@ -15,6 +15,7 @@ interface Order {
   typeOfGood: string;
   expanded?: boolean;
   adjustedPrice?: number;
+  comments?: string
 }
 
 @Component({

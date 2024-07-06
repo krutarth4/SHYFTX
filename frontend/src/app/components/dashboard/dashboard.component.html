@@ -16,6 +16,7 @@
         <p><strong>Estimated Price:</strong> {{ order.estimatedPrice }} EUR</p>
         <p><strong>Capacity:</strong> {{ order.capacity }} kg</p>
         <p><strong>Type of Good:</strong> {{ order.typeOfGood }}</p>
+        <p><strong>Comment:</strong> {{ order.comments }}</p>
         <label for="price">Adjust Price:</label>
         <input type="number" id="price" [(ngModel)]="order.adjustedPrice">
         <button class="accept-btn" (click)="acceptOrder(order)">Accept</button>
