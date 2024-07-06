@@ -23,17 +23,18 @@ export class LoginComponent {
   constructor(private fb: FormBuilder,
               private transferService: TransferDataService,
               private auth : AuthFirebaseService ,
-              private router: Router) {
+              private router: Router,
+  ) {
     this.loginForm = this.fb.group({
       username: ['', Validators.required],
       password: ['', Validators.required]
     });
   }
 
-  onLogin() {
+  async onLogin() {
     if (this.loginForm.valid) {
       const { username, password } = this.loginForm.value;
-      this.transferService.setUser(username, password);
+      this.transferService.setUser(username, password,"shipper");
       this.auth.login(username, password).then((resolve:any) => {
           // Login successful, optionally redirect or perform other actions
           console.info("login successfull", resolve)
