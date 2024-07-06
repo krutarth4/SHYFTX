@@ -1,21 +1,26 @@
 import { Injectable } from '@angular/core';
 import {AngularFireAuth} from "@angular/fire/compat/auth";
 import {MatSnackBar} from "@angular/material/snack-bar";
+import {Router} from "@angular/router";
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthFirebaseService {
 
-  constructor(private afAuth: AngularFireAuth, private snackBar: MatSnackBar) { }
+  constructor(private afAuth: AngularFireAuth, private snackBar: MatSnackBar, private router: Router) { }
 
 
    signUp(email: string, password: string) {
     this.afAuth.createUserWithEmailAndPassword(email, password)
-      .then(() => {
+      .then((response) => {
         // Sign up successful
       })
       .catch((error) => {
+        this.snackBar.open(`${error.message} <br> Redirecting to login page`, 'Close', {
+          duration: 2000,
+        });
+        this.router.navigate(["login"])
         // An error occurred
       });
   }
@@ -26,7 +31,6 @@ export class AuthFirebaseService {
       this.afAuth.signInWithEmailAndPassword(email, password)
         .then(() => {
           // Login successful
-          console.error("login successfull", resolve)
           this.snackBar.open(`Login successful for ${email}`, 'Close', {
             duration: 2000,
           });
