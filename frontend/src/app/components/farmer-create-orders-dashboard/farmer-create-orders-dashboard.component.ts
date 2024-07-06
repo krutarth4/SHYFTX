@@ -8,7 +8,7 @@ import {FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators} fr
 import {MatCardModule} from "@angular/material/card";
 import {MatListModule} from "@angular/material/list";
 import {MatIconModule} from "@angular/material/icon";
-import {MatDialogModule} from "@angular/material/dialog";
+import {MatDialogModule, MatDialog} from "@angular/material/dialog";
 import {MatNativeDateModule} from "@angular/material/core";
 import {MatDatepickerModule} from "@angular/material/datepicker";
 import {MatGridListModule} from "@angular/material/grid-list";
@@ -18,6 +18,8 @@ import {TransferDataService} from "../../services/transferData/transfer-data.ser
 import {CommonModule} from "@angular/common";
 import {GoogleAPIService} from "../../services/GoogleAPI/google-api.service";
 import {MatStepperModule} from '@angular/material/stepper';
+import {FirebaseStorageService} from "../../services/firebaseStorage/firebase-storage.service";
+import {AngularFirestoreModule} from "@angular/fire/compat/firestore";
 
 @Component({
   selector: 'app-farmer-create-orders-dashboard',
@@ -64,10 +66,12 @@ export class FarmerCreateOrdersDashboardComponent implements OnInit {
   ];
 
   constructor(
-    private fb: FormBuilder,
+    public dialog: MatDialog,
+    private fb: FormBuilder, 
     private snackBar: MatSnackBar,
-    private transferDataService: TransferDataService,
-    private googlePlacesService: GoogleAPIService
+    private transferDataService : TransferDataService, 
+    private googlePlacesService: GoogleAPIService,
+    private firebaseStorageService: FirebaseStorageService
   ) {
     this.tripForm = this.fb.group({
       source: ['', Validators.required],
@@ -135,6 +139,7 @@ export class FarmerCreateOrdersDashboardComponent implements OnInit {
         this.snackBar.open('Order submitted successfully!', 'Close', {
           duration: 3000,
         });
+        this.firebaseStorageService.saveInfo(this.formData)
         this.resetForm();
       }, 2000); // Simulating a 2-second delay
     } else {
