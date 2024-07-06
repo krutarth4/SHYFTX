@@ -13,9 +13,8 @@ export class FirebaseStorageService {
 
   }
   getUserRole(email: string){
-    console.log(email);
     return this.store.collection('userRole',
-        ref => ref.where('email', '==', email)).get()
+        ref => ref.where('email', '==', email)).valueChanges()
   }
   saveUserRole (data :any){
     const infoRef = this.store.collection('userRole');

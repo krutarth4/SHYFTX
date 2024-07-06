@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import {BehaviorSubject} from "rxjs";
 import {Router} from "@angular/router";
+import {FirebaseStorageService} from "../firebaseStorage/firebase-storage.service";
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +14,7 @@ export class TransferDataService {
  private userRole : string ="admin"
   farmerRequest:any =[]; // the order form will be saved here
 
-  constructor(private router: Router) {
+  constructor(private router: Router,private db: FirebaseStorageService) {
     // this.farmerRequest = [];
     this.userMap.set('role', "admin");
   }
@@ -27,18 +28,21 @@ export class TransferDataService {
     console.log("transfer service",this.farmerRequest);
   }
 
-  setUser(username: string,password: string, userRole: string){
+  async setUser(username: string,password: string){
     this.userMap.set("username",username);
     this.userMap.set("pass",password);
-    this.userMap.set("role",userRole.toLowerCase());
-    this.roleSource.next(this.getUserRole())
+    this.db.getUserRole(username).subscribe( (data:any) =>{
+       this.userMap.set("role",data[0].userrole.toLowerCase());
+       this.roleSource.next(data[0].userrole.toLowerCase());
       if(this.getUserRole() =="shipper"){
         this.router.navigate(['farmer']);
-      }else if(this.userRole =="carrier"){
+      }else if(this.getUserRole() =="carrier"){
         this.router.navigate(['dashboard']);
       }else{
         this.router.navigate(['home']);
       }
+    })
+
   }
   getUserRole(){
     return this.userMap.has("role")? this.userMap.get("role") : "admin";

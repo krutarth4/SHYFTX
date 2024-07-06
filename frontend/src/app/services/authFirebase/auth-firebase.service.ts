@@ -38,8 +38,10 @@ export class AuthFirebaseService {
 
     return new Promise((resolve: any, reject : any) => {
       this.afAuth.signInWithEmailAndPassword(email, password)
-        .then(() => {
+        .then((response) => {
           // Login successful
+          resolve(response);
+
           this.snackBar.open(`Login successful for ${email}`, 'Close', {
             duration: 2000,
           });

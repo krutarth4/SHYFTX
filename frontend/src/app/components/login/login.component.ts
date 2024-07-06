@@ -34,10 +34,11 @@ export class LoginComponent {
   async onLogin() {
     if (this.loginForm.valid) {
       const { username, password } = this.loginForm.value;
-      this.transferService.setUser(username, password,"shipper");
+
       this.auth.login(username, password).then((resolve:any) => {
           // Login successful, optionally redirect or perform other actions
-          console.info("login successfull", resolve)
+        this.transferService.setUser(username, password);
+          // console.info("login successfull", resolve)
         })
         .catch((error) => {
           // Login failed, display error message
