@@ -1,43 +1,68 @@
-.container{
-  padding: 10px !important;
-  align-items: end;
-  justify-content: end;
-
-}
-mat-card {
-  max-width: 90%;
-  margin: 2em auto;
-  padding: 2em;
+.container {
+  padding: 20px;
 }
 
-mat-form-field {
-  display: block;
-  margin-bottom: 1em;
+.form-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form-row {
+  display: flex;
+  gap: 20px;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.predictions-list {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  background: #fff;
+  border: 1px solid #ccc;
+  max-height: 150px;
+  overflow-y: auto;
+}
+
+.predictions-list li {
+  padding: 10px;
+  cursor: pointer;
+}
+
+.predictions-list li:hover {
+  background-color: #f0f0f0;
 }
 
 .button-row {
   display: flex;
-  justify-content: center;
-  margin-top: 1em;
-  padding: 1em;
+  justify-content: space-between;
+  margin-top: 20px;
 }
 
-ul {
-  list-style-type: none;
-  padding: 0;
-  margin: 0;
-  border: 1px solid #ccc;
-  max-height: 200px;
-  overflow-y: auto;
-  position: absolute;
-  background-color: white;
-  width: 100%;
-  z-index: 1000;
+.truck-cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
 }
-li {
-  padding: 8px;
+
+mat-card {
   cursor: pointer;
+  transition: transform 0.3s ease, background-color 0.3s ease;
 }
-li:hover {
-  background-color: #ddd;
+
+mat-card:hover {
+  transform: scale(1.05);
+}
+
+mat-card.selected {
+  background-color: #d1e7dd;
+  border: 2px solid #0f5132;
+}
+
+mat-horizontal-stepper {
+  margin-top: 20px;
 }

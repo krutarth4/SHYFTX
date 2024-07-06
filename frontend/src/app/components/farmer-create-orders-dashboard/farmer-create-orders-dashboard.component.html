@@ -1,96 +1,128 @@
-<!--<div class="container">-->
-<!--    <button mat-raised-button color="primary" (click)="openDialog()">Create</button>-->
-<!--    <button mat-raised-button color="warn" (click)="addTodo()">Delete</button>-->
-<!--</div>-->
+<mat-horizontal-stepper [linear]="true" #stepper>
+  <mat-step [stepControl]="tripForm">
+    <form [formGroup]="tripForm">
+      <ng-template matStepLabel>Order Details</ng-template>
+      <div class="form-container">
+        <mat-form-field appearance="fill" class="full-width">
+          <mat-label>Pickup Location</mat-label>
+          <input matInput formControlName="source" placeholder="Address, Zipcode, Country">
+        </mat-form-field>
+        <mat-form-field appearance="fill" class="full-width">
+          <mat-label>Delivery Location</mat-label>
+          <input matInput #autocompleteInput formControlName="destination" placeholder="Address, ZipCode, Country" (input)="onInputChange()">
+        </mat-form-field>
+        <ul *ngIf="predictions.length > 0" class="predictions-list">
+          <li *ngFor="let prediction of predictions" (click)="selectPrediction(prediction,'destination')">
+            {{ prediction.description }}
+          </li>
+        </ul>
+        <div class="form-row">
+          <mat-form-field appearance="fill">
+            <mat-label>Pickup Date</mat-label>
+            <input matInput [matDatepicker]="pickupDatePicker" formControlName="pickupDate" placeholder="Pickup date">
+            <mat-datepicker-toggle matSuffix [for]="pickupDatePicker"></mat-datepicker-toggle>
+            <mat-datepicker #pickupDatePicker></mat-datepicker>
+          </mat-form-field>
+          <mat-form-field appearance="fill">
+            <mat-label>Dropoff Date</mat-label>
+            <input matInput [matDatepicker]="dropoffDatePicker" formControlName="dropoffDate" placeholder="Dropoff date">
+            <mat-datepicker-toggle matSuffix [for]="dropoffDatePicker"></mat-datepicker-toggle>
+            <mat-datepicker #dropoffDatePicker></mat-datepicker>
+          </mat-form-field>
+        </div>
+        <mat-form-field appearance="fill" class="full-width">
+          <mat-label>Type of Goods</mat-label>
+          <mat-select formControlName="typeOfGoods">
+            <mat-option value="perishable">Perishable</mat-option>
+            <mat-option value="non-perishable">Non-perishable</mat-option>
+            <mat-option value="fragile">Fragile</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field appearance="fill" class="full-width">
+          <mat-label>Quantity of goods (kg)</mat-label>
+          <input matInput formControlName="capacity" type="number" placeholder="Quantity of goods in kg">
+        </mat-form-field>
+        <mat-form-field appearance="fill" class="full-width">
+          <mat-label>Vehicle Category</mat-label>
+          <mat-select formControlName="vehicleCategory">
+            <mat-option value="flatbed">Flatbed Truck</mat-option>
+            <mat-option value="box">Box Truck (Dry Van)</mat-option>
+            <mat-option value="refrigerated">Refrigerated Truck (Reefer)</mat-option>
+            <mat-option value="tanker">Tanker Truck</mat-option>
+            <mat-option value="flatbed-conestoga">Flatbed with Conestoga</mat-option>
+            <mat-option value="dump">Dump Truck</mat-option>
+            <mat-option value="livestock">Livestock Truck</mat-option>
+            <mat-option value="curtainside">Curtainside Truck</mat-option>
+            <mat-option value="lowboy">Lowboy Trailer</mat-option>
+            <mat-option value="car-carrier">Car Carrier Truck</mat-option>
+            <mat-option value="side-lifter">Side-lifter Truck</mat-option>
+            <mat-option value="hopper">Hopper Truck</mat-option>
+            <mat-option value="box-liftgate">Box Truck with Liftgate</mat-option>
+            <mat-option value="dry-bulk">Dry Bulk Truck</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field appearance="fill" class="full-width">
+          <mat-label>Comments</mat-label>
+          <textarea matInput formControlName="comments" placeholder="Enter any special requirements for the goods specified"></textarea>
+        </mat-form-field>
+      </div>
+      <div class="button-row">
+        <button mat-raised-button color="primary" matStepperNext>Next</button>
+      </div>
+    </form>
+  </mat-step>
 
+  <mat-step [stepControl]="truckSelectionForm">
+    <form [formGroup]="truckSelectionForm">
+      <ng-template matStepLabel>Select Truck</ng-template>
+      <div class="truck-cards">
+        <mat-card *ngFor="let truck of availableTrucks" (click)="selectTruck(truck)" [class.selected]="truckSelectionForm.value.selectedTruck === truck.type">
+          <mat-card-header>
+            <mat-card-title>{{ truck.type }}</mat-card-title>
+            <mat-card-subtitle>{{ truck.description }}</mat-card-subtitle>
+          </mat-card-header>
+          <mat-card-content>
+            <p>{{ truck.capacity }} kg</p>
+            <p>{{ truck.price }} EUR</p>
+          </mat-card-content>
+        </mat-card>
+      </div>
+      <div class="button-row">
+        <button mat-raised-button color="primary" matStepperPrevious>Back</button>
+        <button mat-raised-button color="primary" matStepperNext>Next</button>
+      </div>
+    </form>
+  </mat-step>
 
-<mat-card>
-  <form [formGroup]="tripForm" (ngSubmit)="onSubmit()">
-    <div class="form-row">
-
-
-    <mat-form-field appearance="fill">
-      <mat-label>Pickup Location</mat-label>
-      <input matInput formControlName="source" placeholder="Address, Zipcode, Country">
-    </mat-form-field>
-    <mat-form-field appearance="fill">
-      <mat-label>Delivery Location</mat-label>
-      <input matInput #autocompleteInput formControlName="destination" placeholder="Address, ZipCode, Country" (input)="onInputChange()" >
-    </mat-form-field>
-      <ul *ngIf="predictions.length > 0">
-        <li *ngFor="let prediction of predictions" (click)="selectPrediction(prediction,'destination')">
-          {{ prediction.description }}
-        </li>
-      </ul>
-    </div>
-    <mat-form-field appearance="fill">
-      <mat-label>Pickup Date</mat-label>
-      <input matInput [matDatepicker]="pickupDatePicker" formControlName="pickupDate" placeholder="Pickup date ">
-      <mat-datepicker-toggle matSuffix [for]="pickupDatePicker"></mat-datepicker-toggle>
-      <mat-datepicker #pickupDatePicker></mat-datepicker>
-    </mat-form-field>
-
-    <mat-form-field appearance="fill">
-      <mat-label>Dropoff Date</mat-label>
-      <input matInput [matDatepicker]="dropoffDatePicker" formControlName="dropoffDate" placeholder="Dropoff date">
-      <mat-datepicker-toggle matSuffix [for]="dropoffDatePicker"></mat-datepicker-toggle>
-      <mat-datepicker #dropoffDatePicker></mat-datepicker>
-    </mat-form-field>
-
-    <mat-form-field>
-      <mat-label>Type of Goods</mat-label>
-      <mat-select formControlName="typeOfGoods">
-        <mat-option value="perishable">Perishable</mat-option>
-        <mat-option value="non-perishable">Non-perishable</mat-option>
-        <mat-option value="fragile">Fragile</mat-option>
-      </mat-select>
-    </mat-form-field>
-
-    <mat-form-field appearance="fill">
-      <mat-label>Quantity of goods</mat-label>
-      <input matInput formControlName="capacity" type="number" placeholder="Quantity of goods in kg">
-    </mat-form-field>
-
-    <mat-form-field appearance="fill">
-      <mat-label>Vehicle Category</mat-label>
-      <mat-select formControlName="vehicleCategory">
-        <mat-option value="flatbed">Flatbed Truck</mat-option>
-        <mat-option value="box">Box Truck (Dry Van)</mat-option>
-        <mat-option value="refrigerated">Refrigerated Truck (Reefer)</mat-option>
-        <mat-option value="tanker">Tanker Truck</mat-option>
-        <mat-option value="flatbed-conestoga">Flatbed with Conestoga</mat-option>
-        <mat-option value="dump">Dump Truck</mat-option>
-        <mat-option value="livestock">Livestock Truck</mat-option>
-        <mat-option value="curtainside">Curtainside Truck</mat-option>
-        <mat-option value="lowboy">Lowboy Trailer</mat-option>
-        <mat-option value="car-carrier">Car Carrier Truck</mat-option>
-        <mat-option value="side-lifter">Side-lifter Truck</mat-option>
-        <mat-option value="hopper">Hopper Truck</mat-option>
-        <mat-option value="box-liftgate">Box Truck with Liftgate</mat-option>
-        <mat-option value="dry-bulk">Dry Bulk Truck</mat-option>
-      </mat-select>
-    </mat-form-field>
-
-
-    <mat-form-field appearance="fill">
-      <mat-label>Comments</mat-label>
-      <textarea matInput formControlName="comments" placeholder="enter any special requirements for the goods specified"></textarea>
-    </mat-form-field>
-
-
-    <div class="button-row">
-      <button mat-raised-button color="primary" type="submit">
-        <span >Submit</span>
-      </button>
-    </div>
-  </form>
-</mat-card>
-
-
-
-
-
-
-
-
-
+  <mat-step [stepControl]="paymentForm">
+    <form [formGroup]="paymentForm">
+      <ng-template matStepLabel>Payment Information</ng-template>
+      <div class="form-container">
+        <mat-form-field appearance="fill" class="full-width">
+          <mat-label>First Name</mat-label>
+          <input matInput formControlName="firstName" placeholder="First Name">
+        </mat-form-field>
+        <mat-form-field appearance="fill" class="full-width">
+          <mat-label>Last Name</mat-label>
+          <input matInput formControlName="lastName" placeholder="Last Name">
+        </mat-form-field>
+        <mat-form-field appearance="fill" class="full-width">
+          <mat-label>Credit Card Number</mat-label>
+          <input matInput formControlName="cardNumber" placeholder="Card Number">
+        </mat-form-field>
+        <mat-form-field appearance="fill" class="full-width">
+          <mat-label>Expiry Date</mat-label>
+          <input matInput formControlName="expiryDate" placeholder="MM/YY">
+        </mat-form-field>
+        <mat-form-field appearance="fill" class="full-width">
+          <mat-label>CVV</mat-label>
+          <input matInput formControlName="cvv" placeholder="CVV" type="password">
+        </mat-form-field>
+      </div>
+      <div class="button-row">
+        <button mat-raised-button color="primary" matStepperPrevious>Back</button>
+        <button mat-raised-button color="primary" type="submit">Finish</button>
+      </div>
+    </form>
+  </mat-step>
+</mat-horizontal-stepper>
