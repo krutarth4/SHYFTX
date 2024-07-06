@@ -133,6 +133,8 @@ export class FarmerCreateOrdersDashboardComponent {
     if (this.tripForm.valid) {
       this.isLoading = true;
       this.formData = this.tripForm.value;
+      this.formData.id = this.generateUniqueId();
+      this.formData.timestamp = this.getCurrentTimestamp();
 
       // Simulate an asynchronous operation (e.g., HTTP request)
       setTimeout(() => {
@@ -157,5 +159,15 @@ export class FarmerCreateOrdersDashboardComponent {
       this.tripForm.controls[formField].setValue(prediction.description);
       this.predictions = [];
 
+  }
+
+  // Function to generate a unique ID
+  private generateUniqueId(): string {
+    return Math.random().toString(36).substr(2, 9);
+  }
+
+  // Function to get the current timestamp
+  private getCurrentTimestamp(): string {
+    return new Date().toISOString();
   }
 }
