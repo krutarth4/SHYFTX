@@ -14,7 +14,6 @@ export class HomeComponent {
 
   imageText: string = '';
 
-
   showText(text: string) {
 
     this.showImageText = true;
@@ -22,7 +21,6 @@ export class HomeComponent {
     this.imageText = text;
 
   }
-
 
   hideText() {
 
