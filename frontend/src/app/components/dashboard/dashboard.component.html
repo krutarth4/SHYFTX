@@ -3,14 +3,14 @@
   <ul class="order-list">
     <li *ngFor="let order of orders">
       <div class="order-summary">
-        <span>Order #{{ order.id }}</span>
-        <span>{{ order.estimatedPrice }} EUR</span>
+        <span>Order #{{ order?.id? order.id: "test" }}</span>
+        <span>{{ order?.estimatedPrice ? order.estimatedPrice : "1234 test" }} EUR</span>
         <button class="toggle-btn" (click)="toggleOrderDetails(order, $event)">
           <mat-icon>{{ order.expanded ? 'expand_less' : 'expand_more' }}</mat-icon>
         </button>
       </div>
       <div class="order-details" *ngIf="order.expanded">
-        <p><strong>Farmer Information:</strong> {{ order.farmer.firstname }} {{ order.farmer.lastname }}</p>
+        <p><strong>Farmer Information:</strong> {{ order?.farmer?.firstname ? order.farmer.firstname : "test" }} {{ order?.farmer?.firstname ? order.farmer.lastname : "test"  }}</p>
         <p><strong>Source:</strong> {{ order.source }}</p>
         <p><strong>Destination:</strong> {{ order.destination }}</p>
         <p><strong>Estimated Price:</strong> {{ order.estimatedPrice }} EUR</p>

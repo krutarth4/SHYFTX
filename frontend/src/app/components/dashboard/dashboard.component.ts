@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
+import {FirebaseStorageService} from "../../services/firebaseStorage/firebase-storage.service";
 
 
 interface Order {
@@ -76,7 +77,14 @@ export class DashboardComponent {
       expanded: false
     }
   ];
+  constructor(private firebaseStorageService : FirebaseStorageService,) {
+  }
 
+  ngOnInit(): void {
+    this.firebaseStorageService.getInfoList().subscribe((data: any)=>{
+      this.orders = data;
+    })
+  }
   toggleOrderDetails(order: Order, event: Event): void {
     event.stopPropagation(); // Prevents the event from bubbling up to the parent elements
     order.expanded = !order.expanded;

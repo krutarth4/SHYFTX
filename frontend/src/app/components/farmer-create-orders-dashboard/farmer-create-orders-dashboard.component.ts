@@ -18,6 +18,8 @@ import {MatProgressSpinner} from "@angular/material/progress-spinner";
 import {TransferDataService} from "../../services/transferData/transfer-data.service";
 import {CommonModule} from "@angular/common";
 import {GoogleAPIService} from "../../services/GoogleAPI/google-api.service";
+import {FirebaseStorageService} from "../../services/firebaseStorage/firebase-storage.service";
+import {AngularFirestoreModule} from "@angular/fire/compat/firestore";
 
 // declare var google: any;
 @Component({
@@ -59,7 +61,8 @@ export class FarmerCreateOrdersDashboardComponent {
   predictions: any[] = [];
   // private apiKey = environment.apiKey;
   constructor(public dialog: MatDialog,private fb: FormBuilder, private snackBar: MatSnackBar,
-              private transferDataService : TransferDataService, private googlePlacesService: GoogleAPIService
+              private transferDataService : TransferDataService, private googlePlacesService: GoogleAPIService,
+              private firebaseStorageService: FirebaseStorageService
   ) {
     this.tripForm = this.fb.group({
       source: [''],
@@ -137,6 +140,7 @@ export class FarmerCreateOrdersDashboardComponent {
         this.snackBar.open('Order submitted successfully!', 'Close', {
           duration: 3000,
         });
+        this.firebaseStorageService.saveInfo(this.formData)
         this.resetForm();
       }, 2000); // Simulating a 2-second delay
     } else {

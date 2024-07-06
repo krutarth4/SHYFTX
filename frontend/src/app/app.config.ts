@@ -12,9 +12,12 @@ import { getFunctions, provideFunctions } from '@angular/fire/functions';
 import { getMessaging, provideMessaging } from '@angular/fire/messaging';
 import { getStorage, provideStorage } from '@angular/fire/storage';
 import {environment} from "../environments/environment";
+import { FIREBASE_OPTIONS} from "@angular/fire/compat";
 
 export const appConfig: ApplicationConfig = {
-  providers: [provideZoneChangeDetection({ eventCoalescing: true }), provideRouter(routes), provideAnimationsAsync(), provideAnimationsAsync()
-  ,provideHttpClient(), provideFirebaseApp(() => initializeApp(environment.firebaseConfig
+  providers: [provideZoneChangeDetection({ eventCoalescing: true }),
+    provideRouter(routes), provideAnimationsAsync(), provideAnimationsAsync()
+  ,provideHttpClient(), {provide: FIREBASE_OPTIONS, useValue: environment.firebaseConfig },
+    provideFirebaseApp(() => initializeApp(environment.firebaseConfig
     )), provideAuth(() => getAuth()), provideFirestore(() => getFirestore()), provideDatabase(() => getDatabase()), provideFunctions(() => getFunctions()), provideMessaging(() => getMessaging()), provideStorage(() => getStorage())]
 };
