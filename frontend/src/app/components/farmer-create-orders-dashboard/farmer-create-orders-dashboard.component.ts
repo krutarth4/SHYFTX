@@ -67,9 +67,9 @@ export class FarmerCreateOrdersDashboardComponent implements OnInit {
 
   constructor(
     public dialog: MatDialog,
-    private fb: FormBuilder, 
+    private fb: FormBuilder,
     private snackBar: MatSnackBar,
-    private transferDataService : TransferDataService, 
+    private transferDataService : TransferDataService,
     private googlePlacesService: GoogleAPIService,
     private firebaseStorageService: FirebaseStorageService
   ) {
@@ -91,7 +91,7 @@ export class FarmerCreateOrdersDashboardComponent implements OnInit {
     this.paymentForm = this.fb.group({
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],
-      cardNumber: ['', [Validators.required, Validators.minLength(16), Validators.maxLength(16)]],
+      cardNumber: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(16)]],
       expiryDate: ['', Validators.required],
       cvv: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(3)]]
     });
@@ -101,12 +101,6 @@ export class FarmerCreateOrdersDashboardComponent implements OnInit {
     // this.autocompleteService = new google.maps.places.AutocompleteService();
   }
 
-  addTodo() {
-    this.isFormOpen = !this.isFormOpen;
-    if (this.newTodo.trim()) {
-      this.newTodo = '';
-    }
-  }
 
   onInputChange(): void {
     const input = this.autocompleteInput?.nativeElement.value;
@@ -132,6 +126,7 @@ export class FarmerCreateOrdersDashboardComponent implements OnInit {
       this.formData = this.tripForm.value;
       this.formData.id = this.generateUniqueId();
       this.formData.timestamp = this.getCurrentTimestamp();
+      this.formData.truck = this.truckSelectionForm.value
 
       // Simulate an asynchronous operation (e.g., HTTP request)
       setTimeout(() => {
