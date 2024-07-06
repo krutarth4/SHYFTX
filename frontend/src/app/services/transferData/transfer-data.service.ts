@@ -27,14 +27,14 @@ export class TransferDataService {
     console.log("transfer service",this.farmerRequest);
   }
 
-    setUser(username: string,password: string){
+  setUser(username: string,password: string, userRole: string){
     this.userMap.set("username",username);
     this.userMap.set("pass",password);
-    this.userMap.set("role",username.toLowerCase());
+    this.userMap.set("role",userRole.toLowerCase());
     this.roleSource.next(this.getUserRole())
-      if(this.getUserRole() =="farmer"){
+      if(this.getUserRole() =="shipper"){
         this.router.navigate(['farmer']);
-      }else if(this.userRole =="trucker"){
+      }else if(this.userRole =="carrier"){
         this.router.navigate(['dashboard']);
       }else{
         this.router.navigate(['home']);
