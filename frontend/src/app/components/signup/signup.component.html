@@ -19,7 +19,15 @@
           <mat-error *ngIf="signupForm.get('password')?.invalid && signupForm.get('password')?.touched">
             Password is required
           </mat-error>
-        </mat-form-field>
+        </mat-form-field><br>
+        <mat-radio-group formControlName="userType" class="user-type-group">
+          <mat-radio-button value="carrier">Carrier</mat-radio-button>
+          <mat-radio-button value="shipper">Shipper</mat-radio-button>
+        </mat-radio-group>
+        <mat-error *ngIf="signupForm.get('userType')?.invalid && signupForm.get('userType')?.touched">
+          Please select a user type
+        </mat-error>
+       <br>
         <button mat-raised-button color="primary" type="submit" [disabled]="signupForm.invalid">Sign Up</button>
       </form>
     </mat-card-content>

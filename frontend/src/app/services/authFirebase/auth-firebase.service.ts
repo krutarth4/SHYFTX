@@ -2,19 +2,28 @@ import { Injectable } from '@angular/core';
 import {AngularFireAuth} from "@angular/fire/compat/auth";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {Router} from "@angular/router";
+import {FirebaseStorageService} from "../firebaseStorage/firebase-storage.service";
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthFirebaseService {
 
-  constructor(private afAuth: AngularFireAuth, private snackBar: MatSnackBar, private router: Router) { }
+  constructor(private afAuth: AngularFireAuth, private snackBar: MatSnackBar, private router: Router, private firebaseStorage: FirebaseStorageService) { }
 
 
-   signUp(email: string, password: string) {
+   signUp(email: string, password: string, userRole: string) {
     this.afAuth.createUserWithEmailAndPassword(email, password)
       .then((response) => {
         // Sign up successful
+        this.snackBar.open(`Signup successful! please login again.`, 'Close', {
+          duration: 2000,
+        });
+        this.firebaseStorage.saveUserRole({
+          email: email,
+          userrole: userRole
+        })
+        this.router.navigate(['login']);
       })
       .catch((error) => {
         this.snackBar.open(`${error.message} <br> Redirecting to login page`, 'Close', {

@@ -52,7 +52,4 @@ export class LoginComponent {
 
   }
 
-  signup(username: string, password: string) {
-    this.auth.signUp(username,password)
-  }
 }
