@@ -27,6 +27,9 @@ export class AuthFirebaseService {
         .then(() => {
           // Login successful
           console.error("login successfull", resolve)
+          this.snackBar.open(`Login successful for ${email}`, 'Close', {
+            duration: 2000,
+          });
 
         })
         .catch((error:any) => {

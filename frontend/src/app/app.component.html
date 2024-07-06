@@ -6,9 +6,27 @@
   <img src="/assets/logo.png" alt="Logo" class="logo">
   <span>SHYFTX</span>
   <span class="example-spacer"></span>
-  <button mat-icon-button class="example-icon login-icon" aria-label="Example icon-button with login icon" (click)="login()">
+<!--  <button mat-icon-button class="example-icon login-icon" aria-label="Example icon-button with login icon" (click)="login()">
+    <mat-icon>account_circle</mat-icon>
+  </button>-->
+  <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
     <mat-icon>account_circle</mat-icon>
   </button>
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item (click)="login()">
+      <mat-icon>login</mat-icon>
+      <span>Login</span>
+    </button>
+    <button mat-menu-item (click)="signup()">
+      <mat-icon>person_add</mat-icon>
+      <span>Signup</span>
+    </button>
+    <button mat-menu-item (click)="logout()">
+      <mat-icon>logout</mat-icon>
+      <span>Logout</span>
+    </button>
+  </mat-menu>
+
 
 </mat-toolbar>
 <mat-sidenav-container class="example-container" autosize>

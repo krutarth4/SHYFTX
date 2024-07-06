@@ -112,4 +112,13 @@ export class AppComponent {
   setRole(role: string){
     this.userRole =role;
   }
+
+  signup(){
+    this.router.navigate(['signup']);
+
+  }
+
+  logout() {
+  this.router.navigate(['home']);
+  }
 }
