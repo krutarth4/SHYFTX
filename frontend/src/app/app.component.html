@@ -1,6 +1,6 @@
 
 <mat-toolbar>
-  <button mat-icon-button (click)="sidenav?.toggle()" *ngIf="isAuthenticated" class="example-icon" aria-label="Example icon-button with menu icon">
+  <button mat-icon-button (click)="sidenav?.toggle()" *ngIf="isAuthenticated &&userRole !=='none'" class="example-icon" aria-label="Example icon-button with menu icon">
     <mat-icon>menu</mat-icon>
   </button>
   <img src="/assets/logo.png" alt="Logo" class="logo">
@@ -40,7 +40,7 @@
 
 
 
-        <a mat-list-item routerLink="/home" *ngIf="userRole === 'admin' || userRole === 'none'">Home</a>
+        <a mat-list-item routerLink="/home" *ngIf="userRole === 'admin' ">Home</a>
 
 <!--      For badges in invoice and notifications -->
 <!--      <div matBadge="6" matBadgeOverlap="true" class="demo-section">-->
