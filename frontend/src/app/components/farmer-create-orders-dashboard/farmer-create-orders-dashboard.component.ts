@@ -60,9 +60,13 @@ export class FarmerCreateOrdersDashboardComponent implements OnInit {
   autocompleteService: any;
   predictions: any[] = [];
   availableTrucks: any[] = [
-    { type: 'Flatbed Truck', description: 'Ideal for heavy loads.', capacity: 1000, price: 560 },
-    { type: 'Box Truck', description: 'Perfect for dry goods.', capacity: 800, price: 420 },
-    { type: 'Refrigerated Truck', description: 'For perishable items.', capacity: 500, price: 250 }
+    { id: 3, type: 'Reefer', description: 'For perishable items.', pricePerKm: 2.2, capacity: 500, price: 250, orderType: 'Batched Order', refrigerated: 'Refrigerated', destinations: 3 },
+    { id: 1, type: 'Flatbed Truck', description: 'Ideal for heavy loads.', pricePerKm: 1.9, capacity: 1000, price: 560, orderType: 'Single Order', refrigerated: 'Not Refrigerated', destinations: 1 },
+    { id: 2, type: 'Box Truck', description: 'Perfect for dry goods.', pricePerKm: 1.8, capacity: 800, price: 420, orderType: 'Single Order', refrigerated: 'Not Refrigerated', destinations: 1 },
+    { id: 4, type: 'Semi Trailer', description: 'Large freight transport trailer.', pricePerKm: 2.1, capacity: 500, price: 700, orderType: 'Single Order', refrigerated: 'Refrigerated', destinations: 1 },
+    { id: 5, type: 'Light Truck', description: 'Medium-sized commercial cargo vehicle.', pricePerKm: 1.5, capacity: 500, price: 350, orderType: 'Single Order', refrigerated: 'Not Refrigerated', destinations: 1 },
+    { id: 6, type: 'Van', description: 'Small utility vehicle.', pricePerKm: 1.1, capacity: 500, price: 170, orderType: 'Single Order', refrigerated: 'Not Refrigerated', destinations: 1 }
+
   ];
 
   constructor(
@@ -75,13 +79,19 @@ export class FarmerCreateOrdersDashboardComponent implements OnInit {
   ) {
     this.tripForm = this.fb.group({
       source: ['', Validators.required],
-      destination: ['', Validators.required],
-      pickupDate: ['', Validators.required],
-      dropoffDate: ['', Validators.required],
+      recipientFirstName: ['', Validators.required],
+      recipientLastName: ['', Validators.required],
+      recipientPhone: ['', Validators.required],
+      recipientCountry: ['', Validators.required],
+      recipientState: ['', Validators.required],
+      recipientCity: ['', Validators.required],
+      recipientZipCode: ['', Validators.required],
+      recipientStreet: ['', Validators.required],
+      recipientHouseNumber: ['', Validators.required],
+      recipientMoreInfo: [''],
       typeOfGoods: ['', Validators.required],
-      comments: [''],
-      vehicleCategory: ['', Validators.required],
-      capacity: ['', [Validators.required, Validators.min(1)]]
+      capacity: ['', [Validators.required, Validators.min(0)]],
+      comments: ['']
     });
 
     this.truckSelectionForm = this.fb.group({
