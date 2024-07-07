@@ -1,5 +1,5 @@
 import {Component, input, ViewChild} from '@angular/core';
-import {Router, RouterLink, RouterLinkActive, RouterOutlet} from '@angular/router';
+import {Router, RouterLink, RouterLinkActive, RouterModule, RouterOutlet} from '@angular/router';
 import {CommonModule} from "@angular/common";
 import {MatSidenav, MatSidenavModule} from "@angular/material/sidenav";
 import {MatToolbarModule} from "@angular/material/toolbar";
@@ -38,7 +38,7 @@ import {AuthFirebaseService} from "./services/authFirebase/auth-firebase.service
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet,RouterLink,RouterLinkActive,CommonModule,
+  imports: [RouterOutlet,RouterLink,RouterLinkActive,CommonModule,RouterModule,
     MatAutocompleteModule,
     MatButtonModule,
     MatButtonToggleModule,
@@ -92,10 +92,20 @@ export class AppComponent {
   }
 
   ngOnInit(){
-    this.transferService.currentRole.subscribe(role => this.userRole = role)
+
      this.auth.getAuthState().subscribe(user =>{
        // console.error(user)
       this.isAuthenticated = !!user;
+      console.log(this.isAuthenticated);
+      if(this.isAuthenticated){
+        this.transferService.currentRole.subscribe(role => {
+          console.log("transfer user", role)
+          this.userRole = this.isAuthenticated? role:"none";
+        })
+      }else{
+        this.transferService.clearUserData()
+      }
+
       // console.log(this.isAuthenticated);
     })
   }
@@ -125,7 +135,7 @@ export class AppComponent {
 
   }
 
-  logout() {
-  this.router.navigate(['home']);
+  async logout() {
+    await this.auth.logout()
   }
 }

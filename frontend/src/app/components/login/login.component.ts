@@ -6,6 +6,7 @@ import {MatCardModule} from "@angular/material/card";
 import {TransferDataService} from "../../services/transferData/transfer-data.service";
 import {Router, RouterModule} from "@angular/router";
 import {AuthFirebaseService} from "../../services/authFirebase/auth-firebase.service";
+import {FirebaseStorageService} from "../../services/firebaseStorage/firebase-storage.service";
 
 @Component({
   selector: 'app-login',
@@ -24,6 +25,7 @@ export class LoginComponent {
               private transferService: TransferDataService,
               private auth : AuthFirebaseService ,
               private router: Router,
+              private db : FirebaseStorageService
   ) {
     this.loginForm = this.fb.group({
       username: ['', Validators.required],
