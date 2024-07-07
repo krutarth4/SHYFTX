@@ -26,7 +26,7 @@ export class AuthFirebaseService {
           email: email,
           userrole: userRole
         })
-        this.router.navigate(['login']);
+        this.router.navigate(['login']); ///Removed redirection
       })
       .catch((error) => {
         this.snackBar.open(`${error.message} <br> Redirecting to login page`, 'Close', {
