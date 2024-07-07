@@ -3,6 +3,7 @@ import {AngularFireAuth} from "@angular/fire/compat/auth";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {Router} from "@angular/router";
 import {FirebaseStorageService} from "../firebaseStorage/firebase-storage.service";
+import {Observable} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
@@ -71,7 +72,11 @@ export class AuthFirebaseService {
   //getter method as a property
 
   get isAuthenticated(): boolean {
-    return this.afAuth.currentUser !== null;
+    return this.afAuth?.currentUser !== null;
+  }
+
+  getAuthState(): Observable<any> {
+    return this.afAuth.authState;
   }
 
 

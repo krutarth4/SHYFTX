@@ -4,7 +4,7 @@ import {MatButtonModule} from "@angular/material/button";
 import {MatInputModule} from "@angular/material/input";
 import {MatCardModule} from "@angular/material/card";
 import {TransferDataService} from "../../services/transferData/transfer-data.service";
-import {Router} from "@angular/router";
+import {Router, RouterModule} from "@angular/router";
 import {AuthFirebaseService} from "../../services/authFirebase/auth-firebase.service";
 
 @Component({
@@ -13,7 +13,7 @@ import {AuthFirebaseService} from "../../services/authFirebase/auth-firebase.ser
   imports: [MatInputModule,
     MatButtonModule,
     MatCardModule,
-    ReactiveFormsModule],
+    ReactiveFormsModule,RouterModule],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })

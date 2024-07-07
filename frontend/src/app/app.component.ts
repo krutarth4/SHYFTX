@@ -33,6 +33,7 @@ import {MatTooltipModule} from "@angular/material/tooltip";
 import {MatStepperModule} from "@angular/material/stepper";
 import {MatBadgeModule} from "@angular/material/badge";
 import {TransferDataService} from "./services/transferData/transfer-data.service";
+import {AuthFirebaseService} from "./services/authFirebase/auth-firebase.service";
 
 @Component({
   selector: 'app-root',
@@ -84,13 +85,19 @@ export class AppComponent {
 
   imageUrl = input<string>();
   avatarSize = input<"avatar-sm" | "avatar-xl">();
+  isAuthenticated: boolean = false;
 
-  constructor(private router: Router, private transferService: TransferDataService) {
+  constructor(private router: Router, private transferService: TransferDataService, private auth: AuthFirebaseService) {
 
   }
 
   ngOnInit(){
     this.transferService.currentRole.subscribe(role => this.userRole = role)
+     this.auth.getAuthState().subscribe(user =>{
+       // console.error(user)
+      this.isAuthenticated = !!user;
+      // console.log(this.isAuthenticated);
+    })
   }
 
 

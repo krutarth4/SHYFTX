@@ -1,6 +1,6 @@
 
 <mat-toolbar>
-  <button mat-icon-button (click)="sidenav.toggle()" class="example-icon" aria-label="Example icon-button with menu icon">
+  <button mat-icon-button (click)="sidenav?.toggle()" *ngIf="isAuthenticated" class="example-icon" aria-label="Example icon-button with menu icon">
     <mat-icon>menu</mat-icon>
   </button>
   <img src="/assets/logo.png" alt="Logo" class="logo">
@@ -13,15 +13,19 @@
     <mat-icon>account_circle</mat-icon>
   </button>
   <mat-menu #menu="matMenu">
-    <button mat-menu-item (click)="login()">
+    <button mat-menu-item (click)="login()" *ngIf="!isAuthenticated">
       <mat-icon>login</mat-icon>
       <span>Login</span>
     </button>
-    <button mat-menu-item (click)="signup()">
+    <button mat-menu-item (click)="signup()" *ngIf="!isAuthenticated">
       <mat-icon>person_add</mat-icon>
       <span>Signup</span>
     </button>
-    <button mat-menu-item (click)="logout()">
+    <!--<button mat-menu-item (click)="signup()" *ngIf="!isAuthenticated">
+      <mat-icon>person_add</mat-icon>
+      <span>Signup</span>
+    </button>-->
+    <button mat-menu-item (click)="logout()" *ngIf="isAuthenticated">
       <mat-icon>logout</mat-icon>
       <span>Logout</span>
     </button>
@@ -29,9 +33,9 @@
 
 
 </mat-toolbar>
-<mat-sidenav-container class="example-container" autosize>
+<mat-sidenav-container class="example-container"  autosize>
 <!--     <mat-sidenav #sidenav class="example-sidenav" mode="side" opened="true" (mouseenter)="mouseenter()" (mouseleave)="mouseleave()">-->
-  <mat-sidenav #sidenav mode="side" [(opened)]="opened" (mouseenter)="mouseenter()" (mouseleave)="mouseleave()">
+  <mat-sidenav #sidenav mode="side" [(opened)]="opened" (mouseenter)="mouseenter()" *ngIf="isAuthenticated" (mouseleave)="mouseleave()">
     <mat-nav-list>
 
 
