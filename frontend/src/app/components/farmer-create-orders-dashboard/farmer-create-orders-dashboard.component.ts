@@ -50,6 +50,7 @@ import {Router} from "@angular/router";
 export class FarmerCreateOrdersDashboardComponent implements OnInit {
 
   @ViewChild('autocompleteInput', { static: false }) autocompleteInput: ElementRef | undefined;
+  @ViewChild('autocompleteInput2', { static: false }) autocompleteInput2: ElementRef | undefined;
   newTodo: string = '';
   isFormOpen = false;
   tripForm: FormGroup;
@@ -59,6 +60,7 @@ export class FarmerCreateOrdersDashboardComponent implements OnInit {
   formData: any;
   autocompleteService: any;
   predictions: any[] = [];
+  recipientPrediction: any[] = [];
   availableTrucks: any[] = [
     { id: 3, type: 'Reefer', description: 'For perishable items.', pricePerKm: 2.2, capacity: 500, price: 250, orderType: 'Batched Order', refrigerated: 'Refrigerated', destinations: 3 },
     { id: 1, type: 'Flatbed Truck', description: 'Ideal for heavy loads.', pricePerKm: 1.9, capacity: 1000, price: 560, orderType: 'Single Order', refrigerated: 'Not Refrigerated', destinations: 1 },
@@ -68,6 +70,7 @@ export class FarmerCreateOrdersDashboardComponent implements OnInit {
     { id: 6, type: 'Van', description: 'Small utility vehicle.', pricePerKm: 1.1, capacity: 500, price: 170, orderType: 'Single Order', refrigerated: 'Not Refrigerated', destinations: 1 }
 
   ];
+   sourcePrediction: boolean = false;
 
   constructor(
     public dialog: MatDialog,
@@ -88,7 +91,7 @@ export class FarmerCreateOrdersDashboardComponent implements OnInit {
       recipientCity: ['', Validators.required],
       recipientZipCode: ['', Validators.required],
       recipientStreet: ['', Validators.required],
-      recipientHouseNumber: ['', Validators.required],
+      recipientHouseNumber: ['', Validators.required,],
       recipientMoreInfo: [''],
       typeOfGoods: ['', Validators.required],
       capacity: ['', [Validators.required, Validators.min(0)]],
@@ -113,8 +116,9 @@ export class FarmerCreateOrdersDashboardComponent implements OnInit {
   }
 
 
-  onInputChange(): void {
-    const input = this.autocompleteInput?.nativeElement.value;
+  onInputChange(field: string): void {
+    let input = this.autocompleteInput?.nativeElement.value;
+    console.log(input)
 
     if (input) {
       this.googlePlacesService.getPlacePredictions(input).subscribe(response => {
@@ -166,8 +170,10 @@ export class FarmerCreateOrdersDashboardComponent implements OnInit {
   }
 
   selectPrediction(prediction: any, formField: string): void {
+    console.log(prediction);
     this.tripForm.controls[formField].setValue(prediction.description);
     this.predictions = [];
+    this.recipientPrediction =[]
   }
 
   selectTruck(truck: any): void {
@@ -182,5 +188,22 @@ export class FarmerCreateOrdersDashboardComponent implements OnInit {
   // Function to get the current timestamp
   private getCurrentTimestamp(): string {
     return new Date().toISOString();
+  }
+
+  onInputChangeRecipient(recipientStreet: string) {
+    let input = this.autocompleteInput2?.nativeElement.value;
+    console.log(input)
+
+    if (input) {
+      this.googlePlacesService.getPlacePredictions(input).subscribe(response => {
+        if (response.status === 'OK') {
+          this.recipientPrediction = response.predictions;
+        } else {
+          this.recipientPrediction = [];
+        }
+      });
+    } else {
+      this.recipientPrediction = [];
+    }
   }
 }

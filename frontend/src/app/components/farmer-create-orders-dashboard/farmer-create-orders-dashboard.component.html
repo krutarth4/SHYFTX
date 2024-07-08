@@ -7,8 +7,13 @@
         <div class="sender-section">
           <mat-form-field appearance="outline" class="full-width">
             <mat-label>Pickup Address</mat-label>
-            <input matInput formControlName="source" placeholder="Address, Zipcode, Country">
+            <input matInput #autocompleteInput formControlName="source" placeholder="Address, Zipcode, Country" (input)="onInputChange('source')">
           </mat-form-field>
+          <ul *ngIf="predictions.length > 0" class="predictions-list">
+            <li *ngFor="let prediction of predictions" (click)="selectPrediction(prediction,'source')">
+              {{ prediction.description }}
+            </li>
+          </ul>
           <button mat-raised-button color="primary" type="button">Edit Address</button>
         </div>
         <!-- Recipient Section -->
@@ -45,8 +50,15 @@
           <div class="form-row">
             <mat-form-field appearance="outline">
               <mat-label>Street</mat-label>
-              <input matInput formControlName="recipientStreet" placeholder="Street">
+              <input matInput #autocompleteInput2 formControlName="recipientStreet" placeholder="Street" (input)="onInputChangeRecipient('recipientStreet')">
+
             </mat-form-field>
+            <ul *ngIf="recipientPrediction.length > 0" class="predictions-list">
+              <li *ngFor="let prediction of recipientPrediction" (click)="selectPrediction(prediction,'recipientStreet')">
+                {{ prediction.description }}
+              </li>
+            </ul>
+
             <mat-form-field appearance="outline">
               <mat-label>House Number</mat-label>
               <input matInput formControlName="recipientHouseNumber" placeholder="House Number">
