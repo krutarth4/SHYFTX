@@ -35,7 +35,7 @@
 </mat-toolbar>
 <mat-sidenav-container class="example-container"  autosize>
 <!--     <mat-sidenav #sidenav class="example-sidenav" mode="side" opened="true" (mouseenter)="mouseenter()" (mouseleave)="mouseleave()">-->
-  <mat-sidenav #sidenav mode="side" [(opened)]="opened" (mouseenter)="mouseenter()" *ngIf="isAuthenticated" (mouseleave)="mouseleave()">
+  <mat-sidenav #sidenav mode="side" [(opened)]="opened" (mouseenter)="mouseenter()" *ngIf="isAuthenticated &&userRole !=='none'" (mouseleave)="mouseleave()">
     <mat-nav-list>
 
 

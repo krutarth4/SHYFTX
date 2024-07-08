@@ -19,7 +19,6 @@ import {CommonModule} from "@angular/common";
 import {GoogleAPIService} from "../../services/GoogleAPI/google-api.service";
 import {MatStepperModule} from '@angular/material/stepper';
 import {FirebaseStorageService} from "../../services/firebaseStorage/firebase-storage.service";
-import {AngularFirestoreModule} from "@angular/fire/compat/firestore";
 import {Router} from "@angular/router";
 
 @Component({
