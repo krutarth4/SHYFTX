@@ -42,7 +42,7 @@ import {Router} from "@angular/router";
     MatSnackBarModule,
     MatProgressSpinnerModule,
     CommonModule,
-    MatStepperModule
+    MatStepperModule,MatGridListModule
   ],
   templateUrl: './farmer-create-orders-dashboard.component.html',
   styleUrls: ['./farmer-create-orders-dashboard.component.css']
@@ -71,6 +71,7 @@ export class FarmerCreateOrdersDashboardComponent implements OnInit {
 
   ];
    sourcePrediction: boolean = false;
+  summaryData: any = {};
 
   constructor(
     public dialog: MatDialog,
@@ -192,7 +193,6 @@ export class FarmerCreateOrdersDashboardComponent implements OnInit {
 
   onInputChangeRecipient(recipientStreet: string) {
     let input = this.autocompleteInput2?.nativeElement.value;
-    console.log(input)
 
     if (input) {
       this.googlePlacesService.getPlacePredictions(input).subscribe(response => {
@@ -205,5 +205,16 @@ export class FarmerCreateOrdersDashboardComponent implements OnInit {
     } else {
       this.recipientPrediction = [];
     }
+  }
+
+  saveUserInput() {
+    this.transferDataService.addFarmerRequest(this.tripForm.value)
+    this.summaryData = {
+      trip: this.tripForm.value,
+      truck: this.truckSelectionForm.value
+    };
+
+
+    console.log(this.tripForm.value)
   }
 }

@@ -101,7 +101,7 @@
       </div>
       <!-- Button Row -->
       <div class="button-row">
-        <button mat-raised-button color="primary" matStepperNext [disabled]="!tripForm.valid">Next</button>
+        <button mat-raised-button color="primary" matStepperNext [disabled]="!tripForm.valid"  >Next</button>
       </div>
     </form>
   </mat-step>
@@ -134,7 +134,7 @@
       </div>
       <div class="button-row">
         <button mat-raised-button color="primary" matStepperPrevious>Back</button>
-        <button mat-raised-button color="primary" matStepperNext>Next</button>
+        <button mat-raised-button color="primary" matStepperNext (click)="saveUserInput()">Next</button>
       </div>
     </form>
   </mat-step>
@@ -142,8 +142,27 @@
 <!-- Step 3: Payment Information -->
 <mat-step [stepControl]="paymentForm">
   <form [formGroup]="paymentForm">
-    <ng-template matStepLabel>Payment</ng-template>
+    <ng-template matStepLabel>Order overview</ng-template>
     <div class="payment-panel">
+      <h3>Trip Details</h3>
+      <p>Pickup Address: {{ summaryData.trip?.source }}</p>
+      <p>Recipient First Name: {{ summaryData.trip?.recipientFirstName }}</p>
+      <p>Recipient Last Name: {{ summaryData.trip?.recipientLastName }}</p>
+      <p>Recipient Phone: {{ summaryData.trip?.recipientPhone }}</p>
+      <p>Recipient Country: {{ summaryData.trip?.recipientCountry }}</p>
+      <p>Recipient State: {{ summaryData.trip?.recipientState }}</p>
+      <p>Recipient City: {{ summaryData.trip?.recipientCity }}</p>
+      <p>Recipient Street: {{ summaryData.trip?.recipientStreet }}</p>
+      <p>Recipient House Number: {{ summaryData.trip?.recipientHouseNumber }}</p>
+      <p>Recipient Zip Code: {{ summaryData.trip?.recipientZipCode }}</p>
+      <p>More Info: {{ summaryData.trip?.recipientMoreInfo }}</p>
+      <p>Type of Goods: {{ summaryData.trip?.typeOfGoods }}</p>
+      <p>Quantity: {{ summaryData.trip?.capacity }}</p>
+      <p>Comments: {{ summaryData.trip?.comments }}</p>
+
+      <h3>Truck Details</h3>
+      <p>Selected Truck: {{ summaryData.truck?.selectedTruck }}</p>
+
       <div class="form-container">
         <div class="form-row">
           <mat-form-field appearance="outline" class="half-width">
