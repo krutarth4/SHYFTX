@@ -22,7 +22,7 @@
         </mat-form-field><br>
         <mat-radio-group formControlName="userType" class="user-type-group">
           <mat-radio-button value="carrier">Carrier</mat-radio-button>
-          <mat-radio-button value="shipper">Shipper</mat-radio-button>
+          <mat-radio-button value="shipper">Sender</mat-radio-button>
         </mat-radio-group>
         <mat-error *ngIf="signupForm.get('userType')?.invalid && signupForm.get('userType')?.touched">
           Please select a user type
