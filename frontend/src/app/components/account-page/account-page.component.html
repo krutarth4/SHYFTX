@@ -1,0 +1,24 @@
+<div class="account-settings">
+  <h2>Account Settings</h2>
+  <form [formGroup]="accountForm" (ngSubmit)="onSave()">
+    <mat-form-field appearance="fill">
+      <mat-label>Username</mat-label>
+      <input matInput id="username" formControlName="username" type="text">
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Email</mat-label>
+      <input matInput id="email" formControlName="email" type="email">
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Phone</mat-label>
+      <input matInput id="phone" formControlName="phone" type="text">
+    </mat-form-field>
+    <div *ngIf="isEditMode" class="buttons">
+      <button mat-raised-button color="primary" type="submit">Save</button>
+      <button mat-button type="button" (click)="onCancel()">Cancel</button>
+    </div>
+    <div *ngIf="!isEditMode" class="buttons">
+      <button mat-raised-button color="accent" type="button" (click)="toggleEditMode()">Edit</button>
+    </div>
+  </form>
+</div>

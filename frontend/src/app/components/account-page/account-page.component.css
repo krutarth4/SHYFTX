@@ -1,0 +1,26 @@
+.account-settings {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+.account-settings h2 {
+  text-align: center;
+}
+
+.account-settings form {
+  display: flex;
+  flex-direction: column;
+}
+
+.account-settings form div {
+  margin-bottom: 1rem;
+}
+
+.account-settings .buttons {
+  text-align: center;
+}
+
+.account-settings .buttons button {
+  margin: 0 0.5rem;
+}
