@@ -49,7 +49,8 @@
       <a mat-list-item routerLink="/dashboard" *ngIf="userRole === 'admin' || userRole ==='carrier' || userRole ==='shipper'  ">Orders</a>
       <a mat-list-item routerLink="/invoice" *ngIf="userRole === 'admin' || userRole ==='carrier' || userRole ==='shipper' " >Invoices</a>
       <a mat-list-item routerLink="/contract" *ngIf="userRole === 'admin' || userRole ==='carrier' || userRole ==='shipper' ">Contracts</a>
-        <a mat-list-item routerLink="/farmer/trucks?options" *ngIf="userRole === 'admin' ">Truck Overview</a>
+      <a mat-list-item routerLink="/farmer/trucks?options" *ngIf="userRole === 'admin' || userRole ==='carrier' ">Truck Overview</a>
+      <a mat-list-item routerLink="/account" *ngIf="userRole === 'admin' ">User account</a>
       <a mat-list-item routerLink="/c02" *ngIf="userRole === 'admin' || userRole ==='carrier'  ">Statistics</a>
     </mat-nav-list>
   </mat-sidenav>
