@@ -42,7 +42,11 @@ export const routes: Routes = [
   },
   {
     path:'signup',
-    loadComponent: () => import('./components/signup/signup.component').then(m => m.SignupComponent),
+    loadComponent: () => import('./components/signup/signup.component').then(m => m.SignupComponent)
+},
+  {
+    path:'thanks',
+    loadComponent: () => import('./components/thankYou/thank-you/thank-you.component').then(m => m.ThankYouComponent),
   }
 
 ];
