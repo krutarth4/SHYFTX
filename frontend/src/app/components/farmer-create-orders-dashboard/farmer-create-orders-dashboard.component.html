@@ -138,6 +138,13 @@
                     <div class="order-title">{{ truck.orderType }}</div>
                     <div class="order-details">Pickup: 24-28 July 2024 • {{ truck.destinations }} Destinations</div>
                 </div>
+                <div [ngClass]="['sustainability', truck.sustainabilityType.toLowerCase()]">
+                  <span>{{ truck.sustainabilityType }}</span>
+                  <mat-icon>co2</mat-icon>
+                </div>
+                <div class="sustainability-bar">
+                  <div [ngClass]="['sustainability-bar-filled', truck.sustainabilityType.toLowerCase()]" [ngStyle]="{ width: getSustainabilityBarWidth(truck.sustainabilityType) }"></div>
+                </div>
                 <div class="price-select">
                     <div class="price">€{{ truck.price }}</div>
                     <button class="select-btn">Select</button>

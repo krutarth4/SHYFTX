@@ -5,7 +5,6 @@
   min-height: 100vh;
 }
 
-/* #e4e9ed */
 /* General Stepper Styles */
 mat-horizontal-stepper {
   background-color: #cdd7e4;
@@ -233,4 +232,52 @@ mat-card.selected {
   display: flex;
   justify-content: space-between;
   margin-top: 16px;
+}
+
+.sustainability {
+  display: flex;
+  align-items: center;
+  margin-top: 16px;
+  margin-bottom: 10px;
+  margin-right: 6px;
+}
+
+.sustainability.sustainable { color: #4caf50; }
+.sustainability.acceptable { color: #2196f3; }
+.sustainability.concerning { color: #ff9800; }
+.sustainability.severe { color: #f44336; }
+
+.sustainability mat-icon {
+  margin-left: 8px;
+}
+
+.sustainability-bar {
+  width: 100%;
+  height: 10px;
+  background-color: #e0e0e0;
+  border-radius: 5px;
+  overflow: hidden;
+  margin-top: 8px;
+  margin-bottom: 28px;
+}
+
+.sustainability-bar-filled {
+  height: 100%;
+  border-radius: 5px;
+}
+
+.sustainability-bar-filled.sustainable {
+  background-color: #4caf50;
+}
+
+.sustainability-bar-filled.acceptable {
+  background-color: #2196f3;
+}
+
+.sustainability-bar-filled.concerning {
+  background-color: #ff9800;
+}
+
+.sustainability-bar-filled.severe {
+  background-color: #f44336;
 }
