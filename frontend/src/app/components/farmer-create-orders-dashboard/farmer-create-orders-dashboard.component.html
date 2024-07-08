@@ -77,6 +77,20 @@
         <div class="goods-section">
           <h3>Goods Information</h3>
           <div class="form-row">
+            <mat-form-field appearance="fill">
+              <mat-label>Pickup Date</mat-label>
+              <input matInput [matDatepicker]="pickupDatePicker" formControlName="pickupDate" placeholder="Pickup date ">
+              <mat-datepicker-toggle matSuffix [for]="pickupDatePicker"></mat-datepicker-toggle>
+              <mat-datepicker #pickupDatePicker></mat-datepicker>
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+              <mat-label>Dropoff Date</mat-label>
+              <input matInput [matDatepicker]="dropoffDatePicker" formControlName="dropoffDate" placeholder="Dropoff date">
+              <mat-datepicker-toggle matSuffix [for]="dropoffDatePicker"></mat-datepicker-toggle>
+              <mat-datepicker #dropoffDatePicker></mat-datepicker>
+            </mat-form-field>
+          </div>
+          <div class="form-row">
             <mat-form-field appearance="outline">
               <mat-label>Type</mat-label>
               <mat-select formControlName="typeOfGoods">
@@ -191,10 +205,10 @@
           </mat-form-field>
         </div>
       </div>
-      <div class="button-row">
-        <button mat-raised-button color="primary" matStepperPrevious>Back</button>
-        <button mat-raised-button color="primary" type="submit" (click)="onSubmit()">Finish</button>
-      </div>
+    </div>
+    <div class="button-row">
+      <button mat-raised-button color="primary" matStepperPrevious>Back</button>
+      <button mat-raised-button color="primary" type="submit" (click)="onSubmit()">Finish</button>
     </div>
   </form>
 </mat-step>

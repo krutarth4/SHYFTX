@@ -63,14 +63,14 @@ export class FarmerCreateOrdersDashboardComponent implements OnInit {
   recipientPrediction: any[] = [];
   availableTrucks: any[] = [
     { id: 3, type: 'Reefer', description: 'For perishable items.', pricePerKm: 2.2, capacity: 500, price: 250, orderType: 'Batched Order', refrigerated: 'Refrigerated', destinations: 3 },
-    { id: 1, type: 'Flatbed Truck', description: 'Ideal for heavy loads.', pricePerKm: 1.9, capacity: 1000, price: 560, orderType: 'Single Order', refrigerated: 'Not Refrigerated', destinations: 1 },
+    { id: 1, type: 'Flatbed Truck', description: 'Ideal for heavy loads.', pricePerKm: 1.9, capacity: 1000, price: 460, orderType: 'Single Order', refrigerated: 'Not Refrigerated', destinations: 1 },
     { id: 2, type: 'Box Truck', description: 'Perfect for dry goods.', pricePerKm: 1.8, capacity: 800, price: 420, orderType: 'Single Order', refrigerated: 'Not Refrigerated', destinations: 1 },
-    { id: 4, type: 'Semi Trailer', description: 'Large freight transport trailer.', pricePerKm: 2.1, capacity: 500, price: 700, orderType: 'Single Order', refrigerated: 'Refrigerated', destinations: 1 },
+    { id: 4, type: 'Semi Trailer', description: 'Large freight transport trailer.', pricePerKm: 2.1, capacity: 500, price: 500, orderType: 'Single Order', refrigerated: 'Refrigerated', destinations: 1 },
     { id: 5, type: 'Light Truck', description: 'Medium-sized commercial cargo vehicle.', pricePerKm: 1.5, capacity: 500, price: 350, orderType: 'Single Order', refrigerated: 'Not Refrigerated', destinations: 1 },
-    { id: 6, type: 'Van', description: 'Small utility vehicle.', pricePerKm: 1.1, capacity: 500, price: 170, orderType: 'Single Order', refrigerated: 'Not Refrigerated', destinations: 1 }
+    { id: 6, type: 'Van', description: 'Small utility vehicle.', pricePerKm: 1.1, capacity: 500, price: 270, orderType: 'Single Order', refrigerated: 'Not Refrigerated', destinations: 1 }
 
   ];
-   sourcePrediction: boolean = false;
+  sourcePrediction: boolean = false;
   summaryData: any = {};
 
   constructor(
