@@ -20,6 +20,7 @@ import {GoogleAPIService} from "../../services/GoogleAPI/google-api.service";
 import {MatStepperModule} from '@angular/material/stepper';
 import {FirebaseStorageService} from "../../services/firebaseStorage/firebase-storage.service";
 import {AngularFirestoreModule} from "@angular/fire/compat/firestore";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-farmer-create-orders-dashboard',
@@ -75,7 +76,8 @@ export class FarmerCreateOrdersDashboardComponent implements OnInit {
     private snackBar: MatSnackBar,
     private transferDataService : TransferDataService,
     private googlePlacesService: GoogleAPIService,
-    private firebaseStorageService: FirebaseStorageService
+    private firebaseStorageService: FirebaseStorageService,
+    private router: Router
   ) {
     this.tripForm = this.fb.group({
       source: ['', Validators.required],
@@ -129,7 +131,6 @@ export class FarmerCreateOrdersDashboardComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.tripForm.value);
     this.transferDataService.addFarmerRequest(this.tripForm.value)
     if (this.tripForm.valid) {
       this.isLoading = true;
@@ -142,11 +143,17 @@ export class FarmerCreateOrdersDashboardComponent implements OnInit {
       setTimeout(() => {
         this.isLoading = false;
         this.snackBar.open('Order submitted successfully!', 'Close', {
-          duration: 3000,
+          duration: 1500,
         });
+
         this.firebaseStorageService.saveInfo(this.formData)
         this.resetForm();
       }, 2000); // Simulating a 2-second delay
+
+      //redirect timeout
+      setTimeout(()=>{
+        this.router.navigate(['thanks'])
+      })
     } else {
       // Handle form validation errors or invalid submission
       this.snackBar.open('Please fill in all required fields.', 'Close', {
