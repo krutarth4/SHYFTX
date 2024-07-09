@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, model} from '@angular/core';
 import {FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators} from "@angular/forms";
 import {MatButtonModule} from "@angular/material/button";
 import {MatFormFieldModule} from "@angular/material/form-field";
@@ -16,6 +16,8 @@ import {MatSnackBarModule} from "@angular/material/snack-bar";
 import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
 import {CommonModule} from "@angular/common";
 import {MatStepperModule} from "@angular/material/stepper";
+import {MatCheckboxModule} from "@angular/material/checkbox";
+import {TransferDataService} from "../../services/transferData/transfer-data.service";
 
 @Component({
   selector: 'app-account-page',
@@ -37,7 +39,7 @@ import {MatStepperModule} from "@angular/material/stepper";
     MatSnackBarModule,
     MatProgressSpinnerModule,
     CommonModule,
-    MatStepperModule],
+    MatStepperModule, MatCheckboxModule],
   templateUrl: './account-page.component.html',
   styleUrl: './account-page.component.css'
 })
@@ -46,13 +48,33 @@ export class AccountPageComponent {
   accountForm: FormGroup;
   isEditMode: boolean = false;
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private transferService: TransferDataService) {
     this.accountForm = this.fb.group({
       username: [{ value: '', disabled: true }, Validators.required],
       email: [{ value: '', disabled: true }, [Validators.required, Validators.email]],
-      phone: [{ value: '', disabled: true }, Validators.required]
+      phone: [{ value: '', disabled: true }, Validators.required],
+      firstName: [{ value: '', disabled: true }, Validators.required],
+      lastName: [{ value: '', disabled: true }, Validators.required],
+      businessName: [{ value: '', disabled: true }, Validators.required],
+      streetAddress: [{ value: '', disabled: true }, Validators.required],
+      city: [{ value: '', disabled: true }, Validators.required],
+      stateProvince: [{ value: '', disabled: true }, Validators.required],
+      postalCode: [{ value: '', disabled: true }, Validators.required],
+      country: [{ value: '', disabled: true }, Validators.required],
+      produceGrains: [{ value: false, disabled: true }],
+      produceVegetables: [{ value: false, disabled: true }],
+      produceFruits: [{ value: false, disabled: true }],
+      produceDairy: [{ value: false, disabled: true }],
+      produceMeat: [{ value: false, disabled: true }],
+      produceOther: [{ value: false, disabled: true }],
+      annualYield: [{ value: '', disabled: true }, Validators.required],
+      password: [{ value: '', disabled: true }, [ Validators.minLength(6)]],
+      confirmPassword: [{ value: '', disabled: true }, [ Validators.minLength(6)]],
+      specialInstructions: [{ value: '', disabled: true }]
     });
   }
+
+
 
   ngOnInit(): void {
     // Fetch user data from a service and patch the form
@@ -64,13 +86,32 @@ export class AccountPageComponent {
     const userData = {
       username: 'johndoe',
       email: 'johndoe@example.com',
-      phone: '1234567890'
+      phone: '1234567890',
+      firstName: "Hans",
+      lastName: 'Müller',
+      businessName: "Müller Farms",
+      streetAddress: "Ostheimer Straße 117–139",
+      city: 'Cologne',
+      stateProvince: 'Cologne',
+      postalCode: '51107',
+      country: 'Germany',
+      produceGrains:true,
+      produceVegetables:true,
+      produceFruits: true,
+      produceDairy: false,
+      produceMeat: false,
+      produceOther: false,
+      annualYield: '150.75',
+      password: '',
+      confirmPassword:'' ,
+      specialInstructions: 'Need a reliable person to deliver the cargo on time '
     };
     this.accountForm.patchValue(userData);
   }
 
   toggleEditMode() {
     this.isEditMode = !this.isEditMode;
+    this.accountForm.patchValue(this.transferService.getPersonalInformation());
     if (this.isEditMode) {
       this.accountForm.enable();
     } else {
@@ -83,6 +124,9 @@ export class AccountPageComponent {
     if (this.accountForm.valid) {
       // Save changes
       console.log('Form Value:', this.accountForm.value);
+      //TODO: save the data in the backend
+      this.transferService.setPersonalInformation(this.accountForm.value)
+
       this.toggleEditMode();
     }
   }

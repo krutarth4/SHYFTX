@@ -13,6 +13,7 @@ export class TransferDataService {
   private roleSource = new BehaviorSubject<string>('none');
   currentRole = this.roleSource.asObservable();
   private userRole : string ="none"
+  private personalInformation: any;
   farmerRequest:any =[]; // the order form will be saved here
 
   constructor(private router: Router,private db: FirebaseStorageService) {
@@ -62,6 +63,11 @@ export class TransferDataService {
     this.userMap.clear();
     this.roleSource.next("none");
     this.router.navigate(['home']);
-
+  }
+  getPersonalInformation() {
+    return this.personalInformation;
+  }
+  setPersonalInformation(personalInformation: any) {
+    this.personalInformation = personalInformation;
   }
 }
