@@ -25,6 +25,10 @@
       <mat-icon>person_add</mat-icon>
       <span>Signup</span>
     </button>-->
+    <button mat-menu-item (click)="accountSetting()" *ngIf="isAuthenticated">
+<!--      <mat-icon></mat-icon>-->
+      <span>Signed in as :<br> {{username}} </span>
+    </button>
     <button mat-menu-item (click)="logout()" *ngIf="isAuthenticated">
       <mat-icon>logout</mat-icon>
       <span>Logout</span>

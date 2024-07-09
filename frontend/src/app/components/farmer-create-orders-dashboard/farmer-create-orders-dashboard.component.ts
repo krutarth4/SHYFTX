@@ -93,6 +93,8 @@ export class FarmerCreateOrdersDashboardComponent implements OnInit {
       recipientStreet: ['', Validators.required],
       recipientHouseNumber: ['', Validators.required,],
       recipientMoreInfo: [''],
+      pickupDate:['', Validators.required],
+      dropoffDate:['', Validators.required],
       typeOfGoods: ['', Validators.required],
       capacity: ['', [Validators.required, Validators.min(0)]],
       comments: ['']

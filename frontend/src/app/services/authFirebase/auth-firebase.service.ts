@@ -82,6 +82,10 @@ export class AuthFirebaseService {
     return this.afAuth.authState;
   }
 
+  getUserName(){
+    return this.afAuth.currentUser
+  }
+
 
 
 

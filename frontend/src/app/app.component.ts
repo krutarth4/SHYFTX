@@ -82,6 +82,7 @@ export class AppComponent {
   isExpanded = true;
   isShowing = false;
  userRole: string ="";
+ username: any=""
 
   imageUrl = input<string>();
   avatarSize = input<"avatar-sm" | "avatar-xl">();
@@ -97,6 +98,14 @@ export class AppComponent {
        // console.error(user)
       this.isAuthenticated = !!user;
       console.log(this.isAuthenticated);
+      this.auth.getUserName().then((userName:any) => {
+        console.log(userName);
+        this.username = userName?.multiFactor?.user.email;
+
+      },(error)=>{
+        console.log("logo cred", error);
+      })
+
       if(this.isAuthenticated){
         this.transferService.currentRole.subscribe(role => {
           console.log("transfer user", role)
@@ -137,5 +146,9 @@ export class AppComponent {
 
   async logout() {
     await this.auth.logout()
+  }
+
+  accountSetting() {
+    this.router.navigate(['account']);
   }
 }
