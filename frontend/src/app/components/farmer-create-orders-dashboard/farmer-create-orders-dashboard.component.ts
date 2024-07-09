@@ -232,5 +232,5 @@ export class FarmerCreateOrdersDashboardComponent implements OnInit {
         default:
             return '0%';
     }
-}
+  }
 }
