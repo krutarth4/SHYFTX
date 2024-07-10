@@ -1,0 +1,41 @@
+<div class="dashboard">
+  <h2>Order Requests</h2>
+  <ul class="order-list">
+    <li *ngFor="let order of orders">
+      <div class="page-container">
+        <div class="order-card">
+          <div class="order-container">
+            <div class="order-details">
+              <p><strong>From: </strong>{{ order.source }}</p>
+              <p><strong>To: </strong>{{ order.recipientStreet }}, {{ order.recipientCity }} ,{{order.recipientZipCode}}</p>
+              <p><strong>Goods: </strong>{{ order.typeOfGoods }}</p>
+              <p><strong>Capacity: </strong>{{ order.capacity }}</p>
+              <p><strong>Pickup: </strong> 24th July</p>
+            </div>
+            <div class="order-map">
+              <span class="map-icon">📍</span>
+            </div>
+          </div>
+          <div class="order-actions">
+            <p class="order-earning">Price <strong>€220.00</strong></p>
+            <div>
+              Status:
+              <p *ngIf="accepted" [style.color]="'green'">
+                <span class="icon">&#10004;</span> Accepted
+              </p>
+              <p *ngIf="!accepted" [style.color]="'gray'">
+
+                <span class="icon">&#9888;</span> Pending
+              </p>
+
+
+<!--              <button class="details-button">DETAILS</button>-->
+<!--              <button class="accept-button" (click)="orderAccepted(order)">ACCEPT</button>-->
+            </div>
+          </div>
+        </div>
+      </div>
+    </li>
+  </ul>
+</div>
+

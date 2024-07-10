@@ -103,6 +103,7 @@ export class DashboardComponent {
   }
 
   orderAccepted(order: any) {
+    //TODO integrate backend with the accept button
     this.router.navigate(['/thanks/trucker']);
 
   }

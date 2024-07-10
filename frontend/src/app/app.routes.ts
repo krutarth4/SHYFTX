@@ -15,6 +15,10 @@ export const routes: Routes = [
     path:'dashboard',
     loadComponent: () => import('./components/dashboard/dashboard.component').then(m => m.DashboardComponent),
   },
+  {
+    path:'farmer/orders?overview',
+    loadComponent: () => import('./components/farmer-order-view-page/farmer-order-view-page.component').then(m => m.FarmerOrderViewPageComponent),
+  },
 {
     path:'invoice',
     loadComponent: () => import('./components/invoice/invoice.component').then(m => m.InvoiceComponent),
