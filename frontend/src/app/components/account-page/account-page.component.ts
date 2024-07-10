@@ -84,8 +84,8 @@ export class AccountPageComponent {
   loadUserData() {
     // Dummy data for demonstration; replace with actual data fetching logic
     const userData = {
-      username: 'johndoe',
-      email: 'johndoe@example.com',
+      username: 'Hans Müller',
+      email: 'hans@mueller.com',
       phone: '1234567890',
       firstName: "Hans",
       lastName: 'Müller',

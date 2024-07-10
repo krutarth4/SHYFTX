@@ -49,6 +49,10 @@ export const routes: Routes = [
     loadComponent: () => import('./components/thankYou/thank-you/thank-you.component').then(m => m.ThankYouComponent),
   },
   {
+    path:'thanks/trucker',
+    loadComponent: () => import('./components/thankYou/thank-you-trucker/thank-you-trucker.component').then(m => m.ThankYouTruckerComponent),
+  },
+  {
     path:'account',
     loadComponent: () => import('./components/account-page/account-page.component').then(m => m.AccountPageComponent),
   }

@@ -3,6 +3,7 @@ import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
 import {FirebaseStorageService} from "../../services/firebaseStorage/firebase-storage.service";
+import {Router} from "@angular/router";
 
 
 interface Order {
@@ -78,7 +79,7 @@ export class DashboardComponent {
       expanded: false
     }
   ];
-  constructor(private firebaseStorageService : FirebaseStorageService,) {
+  constructor(private firebaseStorageService : FirebaseStorageService, private router: Router) {
   }
 
   ngOnInit(): void {
@@ -99,5 +100,10 @@ export class DashboardComponent {
   declineOrder(order: Order): void {
     console.log(`Order ${order.id} declined`);
     // Implement decline order logic
+  }
+
+  orderAccepted(order: any) {
+    this.router.navigate(['/thanks/trucker']);
+
   }
 }

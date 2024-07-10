@@ -1,17 +1,17 @@
 import { Component } from '@angular/core';
 import {Router} from "@angular/router";
-// import * as confetti from 'canvas-confetti';
+
 
 declare var confetti: any;
 @Component({
-  selector: 'app-thank-you',
+  selector: 'app-thank-you-trucker',
   standalone: true,
   imports: [],
-  templateUrl: './thank-you.component.html',
-  styleUrl: './thank-you.component.css'
+  templateUrl: './thank-you-trucker.component.html',
+  styleUrl: './thank-you-trucker.component.css'
 })
-export class ThankYouComponent {
 
+export class ThankYouTruckerComponent {
 
   constructor(private router : Router) {
   }
@@ -49,5 +49,4 @@ export class ThankYouComponent {
 
     requestAnimationFrame(frame);
   }
-
 }
