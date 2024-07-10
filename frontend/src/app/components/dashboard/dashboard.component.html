@@ -7,9 +7,10 @@
           <div class="order-container">
               <div class="order-details">
                   <p><strong>From:</strong>{{ order.source }}</p>
-                  <p><strong>To:</strong>{{ order.destination }}</p>
-                  <p><strong>Goods:</strong>{{ order.typeOfGood }}</p>
-                  <p><strong>Pickup:</strong> 25th July</p>
+                  <p><strong>To:</strong>{{ order.recipientStreet }}, {{ order.recipientCity }} ,{{order.recipientZipCode}}</p>
+                  <p><strong>Goods:</strong>{{ order.typeOfGoods }}</p>
+                  <p><strong>Capacity:</strong>{{ order.capacity }}</p>
+                  <p><strong>Pickup:</strong> 24th July</p>
               </div>
               <div class="order-map">
                   <span class="map-icon">📍</span>

@@ -8,7 +8,7 @@ import {Router} from "@angular/router";
 
 interface Order {
   id: number;
-  farmer: { firstname: string; lastname: string; };
+  farmer: { firstname: string ; lastname: string; };
   source: string;
   destination: string;
   estimatedPrice: number;
@@ -27,7 +27,7 @@ interface Order {
   styleUrl: './dashboard.component.css'
 })
 export class DashboardComponent {
-  orders: Order[] = [
+  orders: any[] = [
     {
       id: 1,
       farmer: { firstname: 'John', lastname: 'Doe' },

@@ -74,8 +74,6 @@ export class AccountPageComponent {
     });
   }
 
-
-
   ngOnInit(): void {
     // Fetch user data from a service and patch the form
     this.loadUserData();
