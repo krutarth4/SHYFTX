@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
+import { MatCardModule } from '@angular/material/card';
+import { MatButtonModule } from '@angular/material/button';
 import {FirebaseStorageService} from "../../services/firebaseStorage/firebase-storage.service";
 import {Router} from "@angular/router";
 
@@ -22,7 +24,7 @@ interface Order {
 @Component({
   selector: 'app-dashboard',
   standalone: true,
-  imports: [FormsModule, CommonModule, MatIconModule],
+  imports: [FormsModule, CommonModule, MatIconModule, MatCardModule, MatButtonModule],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.css'
 })
