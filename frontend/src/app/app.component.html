@@ -1,7 +1,7 @@
 
 <mat-toolbar>
   <button mat-icon-button (click)="sidenav?.toggle()" *ngIf="isAuthenticated &&userRole !=='none'" class="example-icon" aria-label="Example icon-button with menu icon">
-    <mat-icon>menu</mat-icon>
+    <mat-icon class="menu-icon">menu</mat-icon>
   </button>
   <img src="./assets/ShyftX.png" alt="Logo" class="logo">
   <span>SHYFTX</span>
@@ -39,7 +39,7 @@
 </mat-toolbar>
 <mat-sidenav-container class="example-container"  autosize>
 <!--     <mat-sidenav #sidenav class="example-sidenav" mode="side" opened="true" (mouseenter)="mouseenter()" (mouseleave)="mouseleave()">-->
-  <mat-sidenav #sidenav mode="side" [(opened)]="opened" (mouseenter)="mouseenter()" *ngIf="isAuthenticated &&userRole !=='none'" (mouseleave)="mouseleave()">
+  <mat-sidenav class="narrow-sidenav" #sidenav mode="side" [(opened)]="opened" (mouseenter)="mouseenter()" *ngIf="isAuthenticated &&userRole !=='none'" (mouseleave)="mouseleave()">
     <mat-nav-list>
 
 

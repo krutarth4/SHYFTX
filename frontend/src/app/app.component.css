@@ -32,6 +32,13 @@
   transition: transform 0.3s ease-in-out;
 }
 
+.menu-icon{
+  color: #9C27B0;
+}
+.narrow-sidenav{
+  min-width: 20%;
+  width: auto;
+}
 
 .example-spacer {
   flex: 1 1 auto;
