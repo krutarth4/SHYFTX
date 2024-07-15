@@ -49,6 +49,13 @@ mat-sidenav-content {
   flex-direction: column;
   min-height: 100%;
 }
+custom-nav-list .mat-mdc-list-item:hover {
+  background-color: #9C27B0; /* Light purple, adjust as needed */
+  color: #673ab7; /* Darker purple for text, adjust as needed */
+}
+.custom-nav-list .mat-mdc-list-item {
+  transition: background-color 0.3s, color 0.3s;
+}
 
 /*badge in side nav */
 demo-section{
