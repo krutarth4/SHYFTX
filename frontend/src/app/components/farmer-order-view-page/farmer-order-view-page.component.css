@@ -93,11 +93,12 @@
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   padding: 16px;
   width: 100%;
-  max-width: 400px;
+  /*max-width: 400px;*/
 }
 .order-container {
   display: flex;
   justify-content: space-between;
+  width: 100%;
   margin-bottom: 16px;
 }
 .order-details p {
@@ -108,10 +109,10 @@
   font-weight: 600;
 }
 .order-map {
-  width: 50%;
-  height: 96px;
-  background-color: #f0f0f0;
-  border-radius: 6px;
+  /*width: 50%;*/
+  /*height: 96px;*/
+  /*background-color: #f0f0f0;*/
+  /*border-radius: 6px;*/
   display: flex;
   align-items: center;
   justify-content: center;
