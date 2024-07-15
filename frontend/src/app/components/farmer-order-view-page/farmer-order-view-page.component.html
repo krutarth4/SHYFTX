@@ -20,10 +20,10 @@
             <p class="order-earning">Price <strong>€250.00</strong></p>
             <div>
               Status:
-              <p *ngIf="accepted" [style.color]="'green'">
+              <p *ngIf="order.status =='accepted'" [style.color]="'green'">
                 <span class="icon">&#10004;</span> Accepted
               </p>
-              <p *ngIf="!accepted" [style.color]="'gray'">
+              <p *ngIf="order.status !='accepted'" [style.color]="'gray'">
 
                 <span class="icon">&#9888;</span> Pending
               </p>

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {Observable} from "rxjs";
+import {map, Observable} from "rxjs";
 import {AngularFirestore} from "@angular/fire/compat/firestore";
 import {environment} from "../../../environments/environment";
 
@@ -19,15 +19,27 @@ export class FirebaseStorageService {
     const infoRef = this.store.collection('userRole');
     infoRef.add(data);
   }
-
   // Save information
   saveInfo(data: any): void {
     const infoRef = this.store.collection(environment.firebaseStorage);
     infoRef.add(data);
   }
 
+  updateStatusInfo(field: any, value: any){
+    // console.error(field, value);
+    return this.store.collection(environment.firebaseStorage).doc("lYrv1cnL1z2PCaLsgic4").update({
+      "status": value,
+    })
+  }
+
+
   // Retrieve information
   getInfoList(): Observable<any[]> {
     return this.store.collection(environment.firebaseStorage).valueChanges();
+  }
+// get doc id on db collection ~ not implemented
+  getDocID(){
+    const a =this.store.collection(environment.firebaseStorage).doc()
+    // console.error("a", a)
   }
 }
