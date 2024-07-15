@@ -44,9 +44,10 @@ export class AuthFirebaseService {
         .then((response) => {
           // Login successful
           resolve(response);
+          const extrainfo = (email == "admin@admin.com"|| email == "hans@mueller.com" || email == "ben@gmail.com")? "":"The access for the account is restricted."
 
-          this.snackBar.open(`Login successful for ${email}`, 'Close', {
-            duration: 2000,
+          this.snackBar.open(`Login successful for ${email}. ${extrainfo}`, 'Close', {
+            duration: 5000,
           });
 
         })
