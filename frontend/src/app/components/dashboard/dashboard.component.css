@@ -93,7 +93,7 @@
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   padding: 16px;
   width: 100%;
-  /*max-width: 400px;*/
+  max-width: 50%
 }
 .order-container {
   display: flex;
@@ -117,6 +117,10 @@
   display: flex;
   align-items: center;
   justify-content: center;
+}
+.order-map iframe{
+  border-radius: 8px;
+
 }
 
 .map-icon {
@@ -224,7 +228,7 @@
   width: 151px;
   height: 193px;
   background-color: #cdd7e4;
-  border-radius: 10px; 
+  border-radius: 10px;
   display: flex;
   align-items: center;
   justify-content: center;
