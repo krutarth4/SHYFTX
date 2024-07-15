@@ -83,21 +83,21 @@ export class FarmerCreateOrdersDashboardComponent implements OnInit {
   ) {
     this.tripForm = this.fb.group({
       source: ['', Validators.required],
-      recipientFirstName: ['', Validators.required],
-      recipientLastName: ['', Validators.required],
-      recipientPhone: ['', Validators.required],
-      recipientCountry: ['', Validators.required],
-      recipientState: ['', Validators.required],
-      recipientCity: ['', Validators.required],
-      recipientZipCode: ['', Validators.required],
+      recipientFirstName: ['Jonas', Validators.required],
+      recipientLastName: ['Ven', Validators.required],
+      recipientPhone: ['+49 15750972483', Validators.required],
+      recipientCountry: ['Germany', Validators.required],
+      recipientState: ['Hamburg', Validators.required],
+      recipientCity: ['Hamburg', Validators.required],
+      recipientZipCode: ['20457', Validators.required],
       recipientStreet: ['', Validators.required],
-      recipientHouseNumber: ['', Validators.required,],
+      recipientHouseNumber: ['2', Validators.required,],
       recipientMoreInfo: [''],
       pickupDate:['', Validators.required],
       dropoffDate:['', Validators.required],
       typeOfGoods: ['', Validators.required],
-      capacity: ['', [Validators.required, Validators.min(0)]],
-      comments: ['']
+      capacity: ['110', [Validators.required, Validators.min(0), Validators.max(6000)]],
+      comments: ['Goods needs to be transfered on time']
     });
 
     this.truckSelectionForm = this.fb.group({
