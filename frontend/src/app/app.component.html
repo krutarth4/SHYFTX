@@ -40,7 +40,7 @@
 <mat-sidenav-container class="example-container"  autosize>
 <!--     <mat-sidenav #sidenav class="example-sidenav" mode="side" opened="true" (mouseenter)="mouseenter()" (mouseleave)="mouseleave()">-->
   <mat-sidenav class="narrow-sidenav" #sidenav mode="side" [(opened)]="opened" (mouseenter)="mouseenter()" *ngIf="isAuthenticated &&userRole !=='none'" (mouseleave)="mouseleave()">
-    <mat-nav-list>
+    <mat-nav-list class="custom-nav-list">
 
 
 
