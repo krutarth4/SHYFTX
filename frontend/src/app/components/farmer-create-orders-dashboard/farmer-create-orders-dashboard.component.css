@@ -298,3 +298,25 @@ mat-card.selected {
   width: 50%;
   /* background-color: green; */
 }
+
+::ng-deep .mat-step-header .mat-step-icon-selected,
+::ng-deep .mat-step-header .mat-step-icon-state-done,
+::ng-deep .mat-step-header .mat-step-icon-state-edit {
+  background-color: #9C27B0;
+  color: #fff;
+}
+
+::ng-deep .mat-stepper-horizontal-line {
+  background-color: #2196f3;
+  color: #3b82f6;
+}
+
+
+  .mat-horizontal-stepper-header {
+    &+.mat-stepper-horizontal-line:nth-child(#{$index}) {
+      height: 2px;
+      background-image: linear-gradient(to right, #00b495, #00aeea);
+    }
+  }
+
+
