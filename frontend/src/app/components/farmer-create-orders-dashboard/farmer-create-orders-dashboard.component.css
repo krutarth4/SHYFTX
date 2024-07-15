@@ -312,11 +312,11 @@ mat-card.selected {
 }
 
 
-  .mat-horizontal-stepper-header {
-    &+.mat-stepper-horizontal-line:nth-child(#{$index}) {
-      height: 2px;
-      background-image: linear-gradient(to right, #00b495, #00aeea);
-    }
-  }
+  /*.mat-horizontal-stepper-header {*/
+  /*  &+.mat-stepper-horizontal-line:nth-child(#{$index}) {*/
+  /*    height: 2px;*/
+  /*    background-image: linear-gradient(to right, #00b495, #00aeea);*/
+  /*  }*/
+  /*}*/
 
 
