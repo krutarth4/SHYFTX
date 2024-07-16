@@ -108,7 +108,7 @@ export class DashboardComponent {
     // console.error("accept clicked",order)
     this.firebaseStorageService.getDocID();
     //TODO integrate backend with the accept button
-    this.firebaseStorageService.updateStatusInfo("status","accepted").then((data: any)=>{
+    this.firebaseStorageService.updateStatusInfo("status","accepted", order).then((data: any)=>{
       // console.error(data)
       this.router.navigate(['/thanks/trucker']);
     })

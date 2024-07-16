@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {map, Observable} from "rxjs";
-import {AngularFirestore} from "@angular/fire/compat/firestore";
+import {AngularFirestore,} from "@angular/fire/compat/firestore";
 import {environment} from "../../../environments/environment";
 
 @Injectable({
@@ -21,13 +21,20 @@ export class FirebaseStorageService {
   }
   // Save information
   saveInfo(data: any): void {
-    const infoRef = this.store.collection(environment.firebaseStorage);
-    infoRef.add(data);
+    const infoRef = this.store.collection(environment.firebaseStorage).doc(data.id).set(data).then((success=>{
+      console.log("data added succesfully", success)
+    }))
+
+    // add(data).then((snapshot)=>{
+    //   console.error(snapshot)
+    // })
+
+    // infoRef.add(data);
   }
 
-  updateStatusInfo(field: any, value: any){
+  updateStatusInfo(field: any, value: any, order:any){
     // console.error(field, value);
-    return this.store.collection(environment.firebaseStorage).doc("lYrv1cnL1z2PCaLsgic4").update({
+    return this.store.collection(environment.firebaseStorage).doc(order.id).update({
       "status": value,
     })
   }
