@@ -1,10 +1,10 @@
-import { Component } from '@angular/core';
+import {Component, viewChild} from '@angular/core';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatButtonModule} from '@angular/material/button';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatIconModule} from '@angular/material/icon';
-import {MatExpansionModule} from '@angular/material/expansion';
+import {MatAccordion, MatExpansionModule} from '@angular/material/expansion';
 import {provideNativeDateAdapter} from '@angular/material/core';
 
 @Component({
@@ -21,6 +21,9 @@ import {provideNativeDateAdapter} from '@angular/material/core';
 })
 export class InvoiceComponent {
   step = 0;
+  accordion = viewChild.required(MatAccordion)
+  constructor() {
+  }
 
   setStep(index: number) {
     this.step = index;

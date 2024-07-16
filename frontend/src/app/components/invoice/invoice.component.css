@@ -1,3 +1,9 @@
+.main{
+  background: #cdd7e4;
+  height: 100%;
+  width: 100%;
+  /*display: flex;*/
+}
 .example-headers-align .mat-expansion-panel-header-description {
   justify-content: space-between;
   align-items: center;
@@ -5,4 +11,19 @@
 
 .example-headers-align .mat-mdc-form-field + .mat-mdc-form-field {
   margin-left: 8px;
+  height: auto;
+}
+
+.example-headers-align{
+  height: 100%;
+  width: 100%;
+}
+div{
+   height: 1000px;
+}
+.full-page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  width: 100%;
 }
