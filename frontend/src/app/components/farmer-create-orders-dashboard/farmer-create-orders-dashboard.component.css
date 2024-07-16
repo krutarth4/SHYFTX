@@ -1,7 +1,7 @@
 :host {
   display: block;
   background-color: #cdd7e4;
-  padding: 20px;
+  /* padding: 20px; */
   min-height: 100vh;
 }
 
@@ -107,21 +107,21 @@ button.mat-raised-button:hover {
 .truck-cards {
   display: flex;
   flex-wrap: wrap;
-  gap: 20px;
+  gap: 26px;
   justify-content: center;
 }
 
-mat-card {
+/* mat-card {
   cursor: pointer;
   transition: transform 0.3s ease, background-color 0.3s ease;
-}
+} */
 
-mat-card:hover {
+/* mat-card:hover {
   transform: scale(1.05);
-}
+} */
 
 mat-card.selected {
-  /* background-color: #d1e7dd; */
+  background-color: #d1e7dd;
   border: 2px solid #0f5132;
 }
 
@@ -129,19 +129,6 @@ mat-card.selected {
   color: #007bff;
 }
 
-.card {
-  display: flex;
-  background-color: white;
-  border-radius: 8px;
-  overflow: hidden;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-  max-width: 600px;
-}
-.image-placeholder {
-  background-color: #e0e0e0;
-  width: 150px;
-  flex-shrink: 0;
-}
 .content {
   padding: 16px;
   display: flex;
@@ -149,6 +136,160 @@ mat-card.selected {
   justify-content: space-between;
   flex-grow: 1;
 }
+
+.payment-panel {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+}
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.form-row {
+  display: flex;
+  gap: 16px;
+}
+
+.half-width {
+  flex: 1;
+}
+
+.three-quarters-width {
+  flex: 3;
+}
+
+.quarter-width {
+  flex: 1;
+}
+
+.button-row {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 16px;
+}
+
+.trip-details-grid {
+  display: flex;
+  width: 100%;
+  height: 300px;
+}
+
+.trip-details-grid-left {
+  width: 50%;
+}
+.trip-details-grid-right {
+  width: 50%;
+}
+
+::ng-deep .mat-step-header .mat-step-icon-selected,
+::ng-deep .mat-step-header .mat-step-icon-state-done,
+::ng-deep .mat-step-header .mat-step-icon-state-edit {
+  background-color: #9C27B0;
+  color: #fff;
+}
+
+::ng-deep .mat-stepper-horizontal-line {
+  background-color: #2196f3;
+  color: #3b82f6;
+}
+
+
+  /*.mat-horizontal-stepper-header {*/
+  /*  &+.mat-stepper-horizontal-line:nth-child(#{$index}) {*/
+  /*    height: 2px;*/
+  /*    background-image: linear-gradient(to right, #00b495, #00aeea);*/
+  /*  }*/
+  /*}*/
+
+
+
+/* Batched order card styles */
+.card-body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* width: 966px; */
+  /* height: 140vh; */
+  /* margin: 0; */
+}
+
+.batched-order-card {
+  display: flex;
+  width: 964px;
+  height: 265px;
+  background-color: white;
+  border-radius: 8px;
+}
+.left {
+  width: 25%;
+}
+.right {
+  width: 75%;
+}
+
+.left-card {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  /* padding: 10px; */
+}
+
+.left-card-top {
+  flex: 8;
+}
+
+.left-card-bottom {
+  flex: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+.right-card {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.right-card-top {
+  margin-top: 20px;
+  margin-right: 40px;
+  display: flex;
+  height: 50%;
+}
+
+.right-card-bottom {
+  margin-bottom: 20px;
+  margin-right: 40px;
+  display: flex;
+}
+
+.image-placeholder {
+  width: 151px;
+  height: 193px;
+  background-color: #cdd7e4;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+  /* margin-left: 10px; */
+}
+
+.image-placeholder img {
+  max-width: 100%;
+  max-height: 100%;
+}
+
 .title {
   font-size: 18px;
   font-weight: bold;
@@ -170,11 +311,16 @@ mat-card.selected {
   margin-bottom: 8px;
 }
 
+.vehicle-info {
+  width: 63%;
+}
+
 .order-info {
   background-color: #f9f0ff;
   border-radius: 4px;
   padding: 8px;
   margin-top: 8px;
+  height: 50%;
 }
 .order-title {
   font-weight: bold;
@@ -185,53 +331,18 @@ mat-card.selected {
   font-size: 12px;
   color: #666;
 }
-.price-select {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-top: 16px;
-}
-.price {
-  font-size: 24px;
-  font-weight: bold;
-}
-.select-btn {
-  background-color: #2196f3;
-  color: white;
-  border: none;
-  padding: 8px 16px;
-  border-radius: 4px;
-  cursor: pointer;
-  font-size: 14px;
+
+.sustainability-info {
+  width: 30%;
 }
 
-.payment-panel {
-  background-color: white;
-  padding: 20px;
-  border-radius: 8px;
+.spacer {
+  width: 33%;
 }
-.form-container {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-.form-row {
-  display: flex;
-  gap: 16px;
-}
-.half-width {
-  flex: 1;
-}
-.three-quarters-width {
-  flex: 3;
-}
-.quarter-width {
-  flex: 1;
-}
-.button-row {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 16px;
+
+.price-info {
+  margin-top: 15px;
+  width: 37%;
 }
 
 .sustainability {
@@ -282,41 +393,81 @@ mat-card.selected {
   background-color: #f44336;
 }
 
-.trip-details-grid {
+.price-select {
   display: flex;
-  width: 100%;
-  height: 300px;
-  /* background-color: white; */
-  /* border-radius: 8px; */
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 16px;
+}
+.price {
+  font-size: 20px;
+  font-weight: bold;
+  margin-right: 20px;
 }
 
-.trip-details-grid-left {
-  width: 50%;
-  /* background-color: yellow; */
-}
-.trip-details-grid-right {
-  width: 50%;
-  /* background-color: green; */
-}
-
-::ng-deep .mat-step-header .mat-step-icon-selected,
-::ng-deep .mat-step-header .mat-step-icon-state-done,
-::ng-deep .mat-step-header .mat-step-icon-state-edit {
-  background-color: #9C27B0;
-  color: #fff;
-}
-
-::ng-deep .mat-stepper-horizontal-line {
+.select-btn {
   background-color: #2196f3;
-  color: #3b82f6;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
 }
 
+.co2 {
+  margin-left:  75px;
+}
+/* Batched order card styles */
 
-  /*.mat-horizontal-stepper-header {*/
-  /*  &+.mat-stepper-horizontal-line:nth-child(#{$index}) {*/
-  /*    height: 2px;*/
-  /*    background-image: linear-gradient(to right, #00b495, #00aeea);*/
-  /*  }*/
-  /*}*/
+/* Single order card styles */
+.single-order-card {
+  display: flex;
+  width: 463px;
+  height: 265px;
+  background-color: white;
+  border-radius: 8px;
+}
 
+.so-left {
+  width: 40%;
+}
 
+.so-right {
+  width: 60%;
+}
+
+.so-vehicle-info {
+  width: 100%;
+}
+
+.so-right-card-top {
+  margin-top: 20px;
+  margin-right: 40px;
+  display: flex;
+  height: 35%;
+}
+
+.so-right-card-middle {
+  /* margin-bottom: 20px; */
+  margin-right: 40px;
+  display: flex;
+  height: 26%;
+}
+
+.so-sustainability-info {
+  width: 84%;
+}
+
+.so-right-card-bottom {
+  margin-bottom: 20px;
+  margin-right: 40px;
+  display: flex;
+  height: 26%;
+}
+
+.so-price-info {
+  /* margin-top: 15px; */
+  width: 100%;
+}
+/* Single order card styles */
