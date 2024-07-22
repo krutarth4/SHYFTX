@@ -37,3 +37,12 @@ Run ng e2e to execute the end-to-end tests via a platform of your choice. To use
 Further help
 
 To get more help on the Angular CLI use ng help or go check out the Angular CLI Overview and Command Reference page.
+
+## Demo
+
+Here is a small demo showcasing some features of the platform .
+
+In the video two different users have been shown , firstly the farmer and secondly the trucker side of platform with each having their own unique platform 
+
+https://github.com/user-attachments/assets/378e4f23-426b-40be-b524-d7e8532edbe4
+
