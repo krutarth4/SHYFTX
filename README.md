@@ -1,6 +1,12 @@
 # SHYFTX
 
-Frontend
+![ShyftX](https://github.com/user-attachments/assets/26cac3a0-0bce-4872-b911-5fe6cf1644f1/)
+
+
+
+
+
+## Developers documentation 
 
 This project was generated with Angular CLI version 18.0.5.
 Docker deployment
