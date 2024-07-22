@@ -38,6 +38,11 @@ Further help
 
 To get more help on the Angular CLI use ng help or go check out the Angular CLI Overview and Command Reference page.
 
+## System Architecture
+
+![Screenshot 2024-07-22 at 20 12 18](https://github.com/user-attachments/assets/3c8c85bc-e6a8-4f1a-bf23-6b71dae79bf0)
+
+
 ## Demo
 
 Here is a small demo showcasing some features of the platform .
